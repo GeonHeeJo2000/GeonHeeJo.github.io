@@ -15,7 +15,7 @@ comments: true
 2. Tracking Data : Event Stream Data + 모든 선수들의 위치정보가 들어있는 데이터
 3. StatsBomb 360 Data : Event Stream Data과 Tracking Data의 중간형식으로 Event Stream Data + 카메라에 포착된 일부선수들의 위치정보만 포함하는 데이터
 - Tracking Data가 가장 좋은 데이터이지만, cost가 너무 높아서 제공받을 수 있는 데이터 수가 매우 적다.
-https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/Soccer%20DataSet.png
+(https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/Soccer%20DataSet.png)
 
 It can also be centered!
 
