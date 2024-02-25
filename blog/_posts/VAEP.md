@@ -12,7 +12,7 @@ comments: true
 
 ### 축구 데이터 형식?
 
-![Crepe](../assets/img/Soccer DataSet.png)
+![Crepe](https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/Soccer%20DataSet.png)
 
 It can also be centered!
 
