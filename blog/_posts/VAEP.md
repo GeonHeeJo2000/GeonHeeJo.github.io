@@ -8,23 +8,9 @@ tags: [test, markdown]
 comments: true
 ---
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+이것은 한국정보과학회에 제출한 "딥러닝 기반 축구 경기 중 플레이 가치 평가 알고리즘"에 대한 연구 설명입니다. 플레이 가치 평가 알고리즘중 가장 유명한 지표인 VAEP(Valuing Actions by Estimating Probabilities)를 더욱 발전시키긴 위해 다양한 연구를 시도해보았습니다.
 
-**Here is some bold text**
-
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
-
-
-How about a yummy crepe?
+### 축구 데이터 형식?
 
 ![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
 
