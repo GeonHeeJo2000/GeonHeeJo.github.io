@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Markdown Sample
-subtitle: Each post also has a subtitle
-gh-repo: seokho-son/seokho-son.github.io
-gh-badge: [star, fork, follow]
+title: VAEP
+subtitle: Valuing Actions by Estimating Probabilities
+gh-repo: GunHeeJoe/VAEP
+gh-badge: [star]
 tags: [test, markdown]
 comments: true
 ---
