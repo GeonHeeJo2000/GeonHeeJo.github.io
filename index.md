@@ -2,7 +2,7 @@
 layout: page
 title: AI Researcher
 subtitle: Computational Intelligence and Data Analytics (CIDA) Laboratory
-cover-img: /assets/img/football-crack.png
+cover-img: /assets/img/football-crack.jpg
 ---
 
 <br/>
