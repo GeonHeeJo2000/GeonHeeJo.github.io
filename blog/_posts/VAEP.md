@@ -17,9 +17,9 @@ comments: true
 - Tracking Data가 가장 좋은 데이터이지만, cost가 너무 높아서 제공받을 수 있는 데이터 수가 매우 적다.
 ![Data](https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/Soccer%20DataSet.png)
 
-It can also be centered!
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
+### Model
+- 본 연구에서 제안한 모델 아키텍처는 DCN(Deep Cross Network)를 활용하였다. 물론 DCN은 수치형 속성만 존재하므로 모델 구조의 변경은 필요하다. 축구 데이터는 범주형 속성(액션유형, 팀, 선수, 터치 부위, 행동 결과등)도 필요하기 때문에 두가지 속성을 조합하는 문제도 해결해야한다.
+![Model](https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/Model.png)
 
 Here's a code chunk:
 
