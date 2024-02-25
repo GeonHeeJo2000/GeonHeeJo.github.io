@@ -19,7 +19,7 @@ navbar-links:
   GitHub: "https://github.com/GunHee-Joe"
 
 # [수정필요] 아바타 로고 사용 시에는 이미지 파일을 지정 (이미지 파일 업로드 후, 위치 지정)
-avatar: "/assets/img/avatar-icon.jpg"
+avatar: "/assets/img/football-crack.jpg"
 # 원형 아바타 이미지 여부 `true` 또는 `false`
 round-avatar: true
 
