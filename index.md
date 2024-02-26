@@ -22,6 +22,6 @@ cover-img: /assets/img/football-crack.jpg
 
 ```
 Affiliation: Computational Intelligence and Data Analytics (CIDA) Laboratory
-Office: Kangwon National University Chuncheon, South Korea
-Email: gun926777@kangwon.ac.kr or gun92677777@gmail.com
+Institution: Kangwon National University Chuncheon, South Korea
+Email: gun926777@kangwon.ac.kr
 ```
