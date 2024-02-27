@@ -13,7 +13,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 과거 : 패스를 평가할 때 사람이 직접 annotation를 달아야하기 때문에 단순한 방식으로 패스를 성공했는지 실패했는지로만 평가를 했습니다.
 - 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 chance를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
 
-    ![Figure1][../assets/img/figure1.jpg)
+    ![Figure1](../assets/img/figure1.jpg)
 
       
     - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
