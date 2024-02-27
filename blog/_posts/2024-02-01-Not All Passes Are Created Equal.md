@@ -23,11 +23,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
     ![Figure2](../assets/img/figure2.jpg)
   
-- Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
-  
-    - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
-    * 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
-    - 이러한 risk과 reward를 객관적으로 추정하는 것을 보여줄 예정이다.
+    - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
+      
+        - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
+        * 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
+        - 이러한 risk과 reward를 객관적으로 추정하는 것을 보여줄 예정이다.
 
 ### DataSet
 - 본 논문에서는 0.1초마다 수집되는 위치정보가 포함된 trackingd-data과 event-name, the ball location, possession등의 이벤트 관련 정보가 들어있는 event-data를 활용했다. 수집한 데이터는 2014/2015~2015/2016 season EPL(English Premier League)의 726경기를 가져왔다.
