@@ -23,7 +23,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 본 연구에서는 더 나은 대안으로 risk(패스 성공 확률)과 reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
 
 
-    ![Figure2](../assets/img/figure2.jpg)
+    <div align="center"><img src="./assets/img/figure2.jpg"></div>
   
     - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
       
@@ -35,7 +35,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 본 논문에서는 0.1초마다 수집되는 위치정보가 포함된 trackingd-data과 event-name, the ball location, possession등의 이벤트 관련 정보가 들어있는 event-data를 활용했다. 수집한 데이터는 2014/2015~2015/2016 season EPL(English Premier League)의 726경기를 가져왔다.
 - 726경기에서 발생한 총 패스는 571,287개이고, 이 중 패스가 성공한 횟수는 468,265개이다. 경기 당 패스의 수로 비교했을 때는, 평균적으로 380.46개가 발생하고 그 중 320.91개 성공했다. 저희의 baseline으로 사용한 패스성공확률은 84.35%이다.
   
-    ![Table1](../assets/img/table1.jpg)
+    <div align="center"><img src="./assets/img/table1.jpg"></div>
   
     - Table1은 패스 이벤트의 summary이다.
       
