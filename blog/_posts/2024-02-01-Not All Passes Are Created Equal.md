@@ -11,7 +11,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 ### Abstract
 - 본 논문은 패스의 가치를 평가하는 새로운 방식을 제안합니다.
 - 과거 : 패스를 평가할 때 사람이 직접 annotation를 달아야하기 때문에 단순한 방식으로 패스를 성공했는지 실패했는지로만 평가를 했습니다.
-- 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 change를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
+- 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 chance를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
 
     ![Figure1](../assets/img/figure1.jpg)
   
@@ -21,7 +21,14 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - 우리는 오른쪽 사진이 더 위험하지만, 성공을 한다면 더 높은 shooting chance를 만들 수 있는 패스이다. 그만큼 파브레가스한테 패스하는 오른쪽 상황보다 너 많은 스킬이 필요합니다. 그러나 현재 패스 지표(binary value)에서는 두 상황의 패스 모두 같은 가중치를 갖고 있습니다. 이는 게임 상황을 반영하지 않고 선수과 팀의 지표에 영향을 미칠 수도 있다.
     - 본 연구에서는 더 나은 대안으로 risk(패스 성공 확률)과 reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
 
-- 
+    ![Figure2](../assets/img/figure2.jpg)
+  
+- Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
+  
+    - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
+    * 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
+    - 이러한 risk과 reward를 객관적으로 추정하는 것을 보여줄 예정이다.
+    - 
 ### AE(AutoEncoder)
 - 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
   
