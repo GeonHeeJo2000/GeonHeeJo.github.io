@@ -48,11 +48,18 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 risk를 측정하는데 활용
           
 ### Risk and Reward
+
 |\|Risk|Reward|
 |:---:|:---:|:---:|
 |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
 |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
-  
+
+|기본값|왼쪽 정렬|가운데 정렬|오른쪽 정렬|
+|---|:---|:---:|---:|
+|내용 1|내용 2|내용 3|내용 4|
+|내용 5|내용 6|내용 7|내용 8|
+|내용 9|내용 10|내용 11|내용 12|
+
 ### VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
 
