@@ -35,11 +35,13 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   
     ![Table1](../assets/img/table1.jpg)
   
-    - Table1은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
+    - Table1은 패스 이벤트의 summary이다.
       
-        - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
-        * 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
-        - 이러한 risk과 reward를 객관적으로 추정하는 것을 보여줄 예정이다.
+        - 백패스 or 사이드패스에 비해 전방패스의 성공확률이 훨씬 낮다.
+        - 경기장을 3등분 했을 때, 우리팀 진영이 first third이고 상대팀 진영이 final third이다. 상대팀 진영과 가까운 공간에서 패스할 수록 패스 성공확률이 더 낮은 것을 볼 수 있다.
+        - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있었다.
+        * 우리는 이러한 패스의 context정보도 risk를 제대로 측정하는데 도움을 줄 것이다.
+          
 ### AE(AutoEncoder)
 - 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
   
