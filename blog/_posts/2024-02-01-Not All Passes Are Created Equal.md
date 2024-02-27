@@ -4,10 +4,6 @@ title: Not All Passes Are Created Equal
 subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Risk and Reward of Passes in Soccer from Tracking Data
 ---
 
-<div align="center">
-    <img src="./assets/img/figure1.jpg">
-</div>
-
 이것은 2017년 KDD Applied Data Science Paper로 제출한 논문으로 축구에서 패스의 가치를 평가하는 논문입니다. 이번 블로그에서는 위 논문에 대해서 자세히 설명하고자 합니다.
 
 - 이 논문은 2017년에 발표되었으며, 기술적으로 어려운 문제를 다루고 있지는 않습니다. 연구에서는 이진 분류 문제를 해결하기 위해 logistic regressor 모델을 사용하고 있습니다. 축구 데이터 분석이 초기 단계에 있었던 시점에 발표된 이 논문은, 기술적인 어려움보다는 축구 데이터 분석에 접근하는 방법을 다루기에 적합한 논문이라고 할 수 있습니다.
@@ -17,7 +13,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 과거 : 패스를 평가할 때 사람이 직접 annotation를 달아야하기 때문에 단순한 방식으로 패스를 성공했는지 실패했는지로만 평가를 했습니다.
 - 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 chance를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
 
-    ![Figure1](../assets/img/figure1.jpg)
+    <div align="center"><img src="./assets/img/figure1.jpg"></div>
+
       
     - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
       
