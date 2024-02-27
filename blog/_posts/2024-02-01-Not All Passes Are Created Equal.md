@@ -13,7 +13,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 과거 : 패스를 평가할 때 사람이 직접 annotation를 달아야하기 때문에 단순한 방식으로 패스를 성공했는지 실패했는지로만 평가를 했습니다.
 - 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 chance를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
 
-    ![Figure1]("../assets/img/figure1.jpg")
+    ![Figure1][../assets/img/figure1.jpg)
 
       
     - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
@@ -23,7 +23,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 본 연구에서는 더 나은 대안으로 risk(패스 성공 확률)과 reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
 
 
-    ![Figure2]("../assets/img/figure2.jpg")
+    ![Figure2](../assets/img/figure2.jpg)
   
     - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
       
@@ -35,7 +35,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 본 논문에서는 0.1초마다 수집되는 위치정보가 포함된 trackingd-data과 event-name, the ball location, possession등의 이벤트 관련 정보가 들어있는 event-data를 활용했다. 수집한 데이터는 2014/2015~2015/2016 season EPL(English Premier League)의 726경기를 가져왔다.
 - 726경기에서 발생한 총 패스는 571,287개이고, 이 중 패스가 성공한 횟수는 468,265개이다. 경기 당 패스의 수로 비교했을 때는, 평균적으로 380.46개가 발생하고 그 중 320.91개 성공했다. 저희의 baseline으로 사용한 패스성공확률은 84.35%이다.
   
-    ![table1]("../assets/img/table1.jpg")
+    ![table1](../assets/img/table1.jpg)
   
     - Table1은 패스 이벤트의 summary이다.
       
