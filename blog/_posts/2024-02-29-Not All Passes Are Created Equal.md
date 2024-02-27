@@ -1,14 +1,12 @@
 ---
 layout: post
-title: GVRNN
-subtitle: Graph Variational Recurrent Neural Networks
+title: Not All Passes Are Created Equal
+subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Risk and Reward of Passes in Soccer from Tracking Data
 ---
 
-이것은 2022 MLSA Workshop에 제출한 "Evaluation of creating scoring opportunities for teammates in soccer via trajectory prediction"논문을 바탕으로 제가 공부한 GVRNN에 대한 설명입니다.
+이것은 2017년 KDD Applied Data Science Paper로 제출한 논문으로 축구에서 패스의 가치를 평가하는 논문입니다. 이번 블로그에서는 위 논문에 대해서 자세히 설명하고자 합니다.
 
-- 위 논문은 GVRNN을 활용하여 선수들의 trajectory를 예측하는 문제를 다루고 있습니다. 논문에 대해서는 본 blog에서 설명하지 않고 GVRNN에 대해서만 설명합니다. 
-- GVRNN을 설명하려면, 결국 AE(AutoEncoder), VAE(Variational AutoEncoder), VRNN(Variational Recurrent Neural Network), GNN(Graph Neural Network)를 모두 알아야한다. GVRNN은 VRNN과 GNN를 활용한 기법이므로 4가지 특징을 모두 안다면, GVRNN를 이해할 수 있을 것이다.
-- 4가지 개념을 하나의 blog에 담으려면 요약된 정보만을 설명할 수 밖에 없다. 나중에 조금 더 자세히 쓸 계획이다.
+- 이 논문은 2017년에 발표되었으며, 기술적으로 어려운 문제를 다루고 있지는 않습니다. 연구에서는 이진 분류 문제를 해결하기 위해 logistic regressor 모델을 사용하고 있습니다. 축구 데이터 분석이 초기 단계에 있었던 시점에 발표된 이 논문은, 기술적인 어려움보다는 축구 데이터 분석에 접근하는 방법을 다루기에 적합한 논문이라고 할 수 있습니다.
 
 ### AE(AutoEncoder)
 - 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
