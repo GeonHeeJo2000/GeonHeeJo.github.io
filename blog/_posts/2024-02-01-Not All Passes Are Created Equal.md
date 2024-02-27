@@ -1,4 +1,4 @@
-    ---
+---
 layout: post
 title: Not All Passes Are Created Equal
 subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Risk and Reward of Passes in Soccer from Tracking Data
