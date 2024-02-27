@@ -21,6 +21,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 우리는 오른쪽 사진이 더 위험하지만, 성공을 한다면 더 높은 shooting chance를 만들 수 있는 패스이다. 그만큼 파브레가스한테 패스하는 오른쪽 상황보다 너 많은 스킬이 필요합니다. 그러나 현재 패스 지표(binary value)에서는 두 상황의 패스 모두 같은 가중치를 갖고 있습니다. 이는 게임 상황을 반영하지 않고 선수과 팀의 지표에 영향을 미칠 수도 있다.
         - 본 연구에서는 더 나은 대안으로 risk(패스 성공 확률)과 reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
 
+
     ![Figure2](../assets/img/figure2.jpg)
   
     - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
