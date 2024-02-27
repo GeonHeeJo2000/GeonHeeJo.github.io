@@ -47,16 +47,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 경기장을 3등분 했을 때, 우리팀 진영이 first third이고 상대팀 진영이 final third이다. 상대팀 진영과 가까운 공간에서 패스할 수록 패스 성공확률이 더 낮은 것을 볼 수 있다.
         - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 risk를 측정하는데 활용
           
-### AE(AutoEncoder)
-- 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
-  
-      1. Encoder : 입력 데이터를 내부 표현(잠재 공간)으로 변환 -> 추출된 특징을 Latent Vector라고 부름
-  
-      2. Decoder : Encoder를 거친 Latent Space를 받아 원본 데이터과 같은 형태로 재구성
-  
-- Model code github : [Model](https://github.com/dariocazzani/pytorch-AE/blob/master/models/AE.py)
-  
-![Model](https://blog.kakaocdn.net/dn/8JonH/btqFBec9cAF/mhxdDF930R0CrHs9NdUKv1/img.png)
+### Risk and Reward
+|\|Risk|Reward|
+|:---:|:---:|:---:|
+|설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
+|Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
   
 ### VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
