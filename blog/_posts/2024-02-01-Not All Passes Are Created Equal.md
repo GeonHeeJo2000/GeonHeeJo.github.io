@@ -49,7 +49,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
           
 ### Risk and Reward
 
-|\|Risk|Reward|
+|   |Risk|Reward|
 |:---:|:---:|:---:|
 |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
 |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
