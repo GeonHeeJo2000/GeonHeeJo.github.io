@@ -97,9 +97,27 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   
       **2. Tactical Feature**
     
-          - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)를 3가지 game-state로 정의한다 : build-up, counter-attack, unstructed-play
-          - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 risk과 reward를 향상시킬 것으로 기대함
-          * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
+        - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)를 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
+        - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 risk과 reward를 향상시킬 것으로 기대함
+        * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
+
+      **3. Formation Feature**
+
+        - 패스의 risk는 defensive-block에도 영향을 미친다. 따라서 우리는 high-block, medium-block, low-block으로 분류한다
+        - defensive-block를 사용하기 위해서 선수과 공의 위치좌표를 클러스터링을 사용했다.
+     
+        - contextual information를 추가적으로 사용하기 위해 formation clustering도 활용한다.
+        - formation clustering은 모든 선수들의 위치 정보를 활용하여 비슷한 formation정보를 찾아주는 논문입니다.
+        - 이를 활용하면 패스가 수비수과 미드필더 사이에서 패스를 했는지, 미드필더과 공격수 사이에서 패스를 했는지를 파악할 수 있다.
+      
+        <p align="center">
+              <img src="https://d3i71xaburhd42.cloudfront.net/34b4f2ae4d541be465ee34a6d168d80edd18123e/4-Figure5-1.png">
+              <br>
+              Formation Clustering
+            </p>
+
+        - 위 그림은 "Large-scale analysis of soccer matches using spatiotemporal tracking data"에서 제안한 Formation clstering했을 때 나온 유사한 formation그림이다.
+        
 
 ## VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
