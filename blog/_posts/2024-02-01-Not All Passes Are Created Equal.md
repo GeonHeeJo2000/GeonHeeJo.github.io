@@ -15,6 +15,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   
     <p align="center">
       <img src="../assets/img/figure1.jpg">
+      <br>
+      Figure1
     </p>
       
     - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
@@ -25,6 +27,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
  
     <p align="center">
       <img src="../assets/img/figure2.jpg">
+      <br>
+      Figure2
     </p>
     
     - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
@@ -39,6 +43,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
     <p align="center">
       <img src="../assets/img/table1.jpg">
+      <br>
+      Table1
     </p>
    
     - Table1은 패스 이벤트의 summary이다.
@@ -61,11 +67,15 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - Data : Train(352,466) & Valid(114,257) & Test(114,257)
 
 # Context Features
-- s
+- 패스 성공률이 context과 관계가 있다는 것은 table1에서 확인할 수 있었다. 앞서봤던 micro-level뿐 아니라 더 높은 수준의 contextual infromation이 예측을 향상시키고 코치들에게 유용한 정보를 제공할지도 모른다.
 
     <p align="center">
       <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/5-Figure5-1.png">
+      <br>
+      Figure5
     </p>
+
+    -
 
 ### VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
