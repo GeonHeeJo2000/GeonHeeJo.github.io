@@ -52,7 +52,20 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 |   |Risk|Reward|
 |:---:|:---:|:---:|
 |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
+|Feature|Micro features & Tactical features & Formation features|
 |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
+
+### Model
+- Random Forest : 비선형 블랙박스 모델로 예측 과정을 해석하기 어려움. -> coaching point(coefficient)가 필요함.
+- Logistic Regressor : 패스의 성능에 영향을 주는 요인을 코치들도 분석하는 것이 중요하므로 본 연구에서는 선형 모델인 Logistic Regerssor를 활용한다.
+- Data : Train(352,466) & Valid(114,257) & Test(114,257)
+
+# Context Features
+- s
+
+    <p align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/5-Figure5-1.png">
+    </p>
 
 ### VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
