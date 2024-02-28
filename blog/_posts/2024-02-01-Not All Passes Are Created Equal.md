@@ -95,7 +95,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 그러나, Intended Receiver에도 단점이 존재한다. 실패한 패스 위치 주위에 사람이 여러명 있거나 패스가 초기에 차단당했을 경우 Intended Receiver를 예측하기는 어렵다. 뿐만 아니라 패스가 실제로 달리는 선수 앞으로 떨어졌는지 뒤로 떨어졌는지 알 수 없기 때문에 패스의 절대적인 위치만을 활용하는 것이. Intended Receiver의 한계이다.
         * 아직까지 Intended Receiver를 정확하게 분류하는 연구를 많이 보지는 못했다. 실제로도 제가 봤을 때는 거의 없었다. 그나마 가장 좋았던 것이 Expected pass라는 논문에서 Intended Receiver를 예측하는 연구를 했었는데, 성공한 패스는 93%, 실패한 패스는 72%로 나왔었다.
 
-      **2. Tactical Feature**
+    **2. Tactical Feature**
   
           - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)를 3가지 game-state로 정의한다 : build-up, counter-attack, unstructed-play
           - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 risk과 reward를 향상시킬 것으로 기대함
