@@ -97,7 +97,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   
       **2. Tactical Feature**
     
-        - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)를 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
+        - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)ㅇ에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
         - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 risk과 reward를 향상시킬 것으로 기대함
         * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
 
