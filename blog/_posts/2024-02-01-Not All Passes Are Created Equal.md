@@ -58,7 +58,6 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 |   |Risk|Reward|
 |:---:|:---:|:---:|
 |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
-|Feature|Micro features & Tactical features & Formation features|
 |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
 
 
@@ -83,14 +82,17 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     1. Micro Feature
         - 대표적인 패스의 context정보 : 속도, 거리, 패스각도, 첫터치 시간등을 사용한다.
         - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
-        - Expected Receiver(Intedted Recevier) : 패스의 의도된 receiver
+        - Expected Receiver(Intented Recevier) : 패스의 의도된 receiver
 
         <p align="center">
           Expected Receiver = \(\frac{\text{Distance}}{\text{Min Distance}} \times \frac{\text{Angle}}{\text{Min Angle}}\)
         </p>
 
-        
-
+        - 패스의 성공 확률은 패스 수신자의 개인적인 기술에 영향을 미친다. 롱패스를 잘 받기고 유명한 Didier Drogba에게 패스를 한다면, 패스스킬이 좋지 않은 선수가 패스를 하거나 받기 어려운 패스도 패스 성공 확률을 높아질 수 있다.
+        - 그러나, 실패한 패스의 경우 실제로 수신자가 누구인지 알 수없기 때문에, 패스 수신자의 개인적인 기술을 고려할 수 없다. 이 때, 고안해낸 것이 Expected Receiver(Intended Receiver)이다.
+        - 이전 발표한 "Beyond Completion Rate: Evaluating the Passing Ability of Footballers"해당 논문은 실패한 패스 위치에서 가장 가까운 수신자를 Intended Receiver라고 정의했지만, 본 연구에서는 잠재적인 수신자들의 각도까지도 고려해야 Intended Receiver를 정의하고자 한다.
+        - 그러나, Intended Receiver에도 단점이 존재한다. 실패한 패스 위치 주위에 사람이 여러명 있거나 패스가 초기에 차단당했을 경우 Intended Receiver를 예측하기는 어렵다. 뿐만 아니라 패스가 실제로 달리는 선수 앞으로 떨어졌는지 뒤로 떨어졌는지 알 수 없기 대문에 패스의 절대적인 위치만을 활용하는 것이. Intended Receiver의 한계이다.
+        * 아직까지 Intended Receiver를 정확하게 분류하는 연구를 많이 보지는 못했다. 실제로도 제가 봤을 때는 거의 없었다. 그나마 가장 좋았던 것이 Expected pass라는 논문에서 성공한 패스는 93%, 실패한 패스는 72%였다.
       
 
 ## VAE(Variational AutoEncoder)
