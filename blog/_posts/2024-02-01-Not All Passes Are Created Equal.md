@@ -79,6 +79,18 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
     - Figure5은 패스의 contextual feature를 담은 passing dictionary이다.
         - 우리는 3가지 구조의 contextual feature를 만들어서 예측 성능을 향상시키고자한다.
+     
+    1. Micro Feature
+        - 대표적인 패스의 context정보 : 속도, 거리, 패스각도, 첫터치 시간등을 사용한다.
+        - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
+        - Expected Receiver(Intedted Recevier) : 패스의 의도된 receiver
+
+        <p align="center">
+          Expected Receiver = \(\frac{\text{Distance}}{\text{Min Distance}} \times \frac{\text{Angle}}{\text{Min Angle}}\)
+        </p>
+
+        
+
       
 
 ## VAE(Variational AutoEncoder)
