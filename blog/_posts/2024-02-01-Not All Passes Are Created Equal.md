@@ -147,20 +147,12 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         
 ## Match Analysis
 - 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
-  
     <p align="center">
-          <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png">
-          <br>
-          Figure 6
-          <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png">
-          <br>
-          Figure 7
-        </p>
-<!--     <p align="right">
-          <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png">
-          <br>
-          Figure 7
-        </p> -->
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png" align="center" width="32%">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png" align="center" width="32%">
+      <figcaption align="center">Figure 6 & Figure 7</figcaption>
+    </p>
+
 
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
