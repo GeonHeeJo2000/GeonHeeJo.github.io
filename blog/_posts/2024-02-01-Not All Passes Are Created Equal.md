@@ -188,7 +188,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
     - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
     
-  $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_s^\text{risk}) - \sum_{u=1}^{U} (y_u^\text{risk} - 1)$$
+  $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_risk^\text{s}) - \sum_{u=1}^{U} (y_risk^\text{u} - 1)$$
 
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
