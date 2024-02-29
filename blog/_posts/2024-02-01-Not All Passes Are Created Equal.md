@@ -124,8 +124,9 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       Figure4
     </p>
    
-    - Figure4은 tactical and formation features은 보여준다
-  
+    - Figure4은 tactical and formation features을 보여준다
+    <br>
+    
     |   |Left|Right|
     |:---:|:---:|:---:|
     |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 상황|The likelihood of a pass creating a shot chance|
