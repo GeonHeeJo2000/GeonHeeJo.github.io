@@ -129,7 +129,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 왼쪽 사진의 경우, 골키퍼가 공을 잡자마자 빠르게 진행하는 counter-attack인 모습을 확인할 수 있다. 또한, 급하게 상대 수비수들이 복귀해서 block를 갖추지 못한 high-block임도 확인할 수 있다.
         - 수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 패스 성공률이 높은 것을 확인할 수 있다. 그리고, 진취적인 성격을 띄는 패스가 많으므로 reward가 높은 것을 확인할 수 있다.
       * 진취적인 패스(Progressive Pass) : 하프라인을 기준으로 우리팀 진영에서 30m이상의 패스 or 상대팀 진영에서 10m이상의 패스
-      * ![Progressive Pass)(https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
+      * 진취적인 패스 관련 기사 : [Progressive Pass)(https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
         - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 risk를 측정하는데 활용
         - 
 
