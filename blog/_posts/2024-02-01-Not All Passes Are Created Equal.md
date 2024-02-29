@@ -148,14 +148,16 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 ## Match Analysis
 - 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
     <p align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png" align="center" width="300" height="300">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png" align="center" width="300" height="300">
+      <img src="../assets/figure6.jpg" align="center" width="300" height="300">
+      <img src="../assets/figure7.jpg" align="center" width="300" height="300">
       <br>
       Figure 6 & Figure 7
       <figcaption align="center"></figcaption>
     </p>
 
-    - Figure 6 & Figure 7은 2016년 맨유(무리뉴) vs 맨시티(펩 과르디올라)의 경기에서 맨유가 1vs0으로 승리한 경기에 대한 summary를 보여준다.
+    - Figure 6 & Figure 7은 2016년 맨시티(펩 과르디올라) vs 맨유(무리뉴)의 경기에서 맨시티가 0 vs 1으로 패배한 경기에 대한 summary를 보여준다.
+    - Basic summary : 점유율(55% vs 45%), 총 패스수(402 vs 266), 패스성공율(88% vs 82%)임을 볼 수 있다. 그러나, 이러한 basic summary를 보면 의문점이 들 수 밖에 없다. 그럼 왜 진거지에 대한 의문을 제기할 수 밖에 없다. 즉, Basic summary만으로는 분석에 한계가 있다.
+    - Pass Risk and Pass Reward(danger) : 맨시티는 맨유에 비하여 더 많은 dangerous pass를 수행하고(131 vs 72) 더 높은 Pass Danger(16% vs 13.5%)를 가졌는데도 불구하고, 패배했다. 논문에서는 Pass Risk(14% vs 17%)가 낮은 것이 패배의 원인중 하나라고 분석하고 싶은 것 같다.
 
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
