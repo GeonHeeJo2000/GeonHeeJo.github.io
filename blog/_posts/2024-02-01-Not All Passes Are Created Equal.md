@@ -199,14 +199,24 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   <p align="center">
     <img src="https://files.oaiusercontent.com/file-uH0Z5GP9WuGZFzV19T937Pii?se=2024-02-29T11%3A28%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D299%2C%20immutable&rscd=attachment%3B%20filename%3Dimage.png&sig=jF9poaQvpihhPLgcoT/gQzNfNIZWN9xR1mcz0GwdTZ0%3D">
     <br>
-    Figure8
   </p>
 
   3. PRA(Passes Received Added)
-  - 패스를 잘 받는 선수는 누구일까?
-  - $XD_{pr}$
+  - 패스를 잘 받는 선수는 누구일까? 
+  - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
   
+    <p align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
+      <br>
+      Figure9
+    </p>
 
+  4. TPA(Total Passes Added)
+  - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
+  - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
+    
+  $$\text{TPA(Total Passes Added} = PPM(Passing Plus Minus) + PRA(Passes Received Added)$$
+  
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
