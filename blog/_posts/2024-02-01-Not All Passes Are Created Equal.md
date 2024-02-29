@@ -124,11 +124,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       Figure4
     </p>
    
-    - Figure4은 tactical and formation features은 보여준다
-        |   |Left figure|Right figure|
-        |:---:|:---:|:---:|
-        |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
-        |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
+        - Figure4은 tactical and formation features은 보여준다
+            |   |Left figure|Right figure|
+            |:---:|:---:|:---:|
+            |설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
+            |Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
       
         - 왼쪽 사진의 경우, 골키퍼가 공을 잡자마자 빠르게 진행하는 counter-attack인 모습을 확인할 수 있다. 또한, 급하게 상대 수비수들이 복귀해서 block를 갖추지 못한 high-block임도 확인할 수 있다.
         - 수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 패스 성공률이 높은 것을 확인할 수 있다. 그리고, 진취적인 성격을 띄는 패스가 많으므로 reward가 높은 것을 확인할 수 있다.
