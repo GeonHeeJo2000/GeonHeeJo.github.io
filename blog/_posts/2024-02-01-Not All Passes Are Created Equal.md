@@ -164,13 +164,17 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
 
 ## Specific Play Analysis
-- 소유권 과정에서 어느 선수가 가장 중요한 패스(Reward가 높은 패스)를 했는지도 파악할 수 있을까?
+- 소유권 과정에서 어느 선수가 가장 중요한 패스(Reward가 높은 패스)를 했는지도 파악할 수 있을까? 과연 어시스트를 수행한 선수가 가장 Reward가 높을까?
 
     <p align="center">
       <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/6-Figure8-1.png">
       <br>
       Figure8
     </p>
+
+    - Figure 8은 소유권중 각 패스의 Reward를 보여준 그림이다.
+        - 실제로 어시스트를 수행한 선수는 Willian이지만, 가장 Reward를 높게 받은 선수는 Fabregas이다. 이는 윌리안의 위험한 지역에서 공을 유지하고 패스하는 능력만 포착하는 것이 아닌 파브레가스의 패스도 Reward가 높다는 것을 식별할 수 있음을 보여준다.
+          
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
