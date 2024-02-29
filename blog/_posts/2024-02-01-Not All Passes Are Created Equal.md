@@ -157,13 +157,16 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
     - Figure 6 & Figure 7은 2016년 맨시티(펩 과르디올라) vs 맨유(무리뉴)의 경기에서 맨시티가 0 vs 1으로 패배한 경기에 대한 summary를 보여준다.
     - Basic summary : 점유율(55% vs 45%), 총 패스수(402 vs 266), 패스성공율(88% vs 82%)임을 볼 수 있다. 그러나, 이러한 basic summary를 보면 의문점이 들 수 밖에 없다. 그럼 왜 진거지에 대한 의문을 제기할 수 밖에 없다. 즉, Basic summary만으로는 분석에 한계가 있다.
-    - Pass Risk and Pass Reward(danger) : 맨시티는 맨유에 비하여 더 많은 dangerous pass를 수행하고(131 vs 72) 더 높은 Pass Danger(16% vs 13.5%)를 가졌는데도 불구하고, 패배했다. 논문에서는 Pass Risk(14% vs 17%)가 낮은 것이 패배의 원인중 하나라고 분석하고 싶은 것 같다.
-
+    - Pass Risk and Pass Reward(danger) : 맨시티는 맨유에 비하여 더 많은 dangerous pass(131 vs 72)를 했고 더 Danger(16% vs 13.5%)를 했지만, Risk(14% vs 17%)는 더 낮았다. 
+    - Pass Risk와 Pass Reward(danger)의 관점에서 분석해보면, Pass Risk가 패배의 원인이 될 수 있음을 확인할 수 있습니다. 실제로, 맨유의 공격 루트 중 상당수가 맨시티의 패스 미스로 인한 역습에서 비롯되었습니다. 이는 경기에서 관찰된 맨시티의 잦은 패스미스가 Pass Risk와 유사함을 확인할 수 있다.
+      
+    - Figure 7은 선수별 Pass Risk와 Pass Reward를 보여준다. Pass Risk가 높은 선수가 주로 골키퍼과 수비수이며, Pass Danger이 높은 선수가 주로 공격수와 공격형 미드필더인 점을 볼 때, Pass Risk과 Pass Reward가 선수들의 특징을 반영하고 있음을 확인할 수 있다. 
+      
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
       1. Prior : 데이터를 접근하기 전 가지고 있는 사전 분포를 통해서 데이터를 추정함.
-          * Encoder가 입력데이터를 받아 Latent Space표현으로 변환하는 역할을 한다면, Prior은 Latent Space에 대한 전체적인 구조            와 분포를 정의함으로써 데이터를 생성할 때 일반화능력을 향상시킬 수 있다.
+          * Encoder가 입력데이터를 받아 Latent Space표현으로 변환하는 역할을 한다면, Prior은 Latent Space에 대한 전체적인 구조와 분포를 정의함으로써 데이터를 생성할 때 일반화능력을 향상시킬 수 있다.
           * 수식은 t시점 이전(과거)의 정보만을 활용한 분포를 추정하는 식임을 확인할 수 있다.
   
   $$\ \text{p}_{\theta}(z_t | x_{<t}, z_{<t}) = \ \phi_{\text{prior}}(h_{t-1})$$
