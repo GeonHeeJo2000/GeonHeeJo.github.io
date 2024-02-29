@@ -150,7 +150,9 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     <p align="center">
       <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png" align="center">
       <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png" align="center">
-      <figcaption align="center">Figure 6 & Figure 7</figcaption>
+      <br>
+      Figure 6 & Figure 7
+      <figcaption align="center"></figcaption>
     </p>
 
 
