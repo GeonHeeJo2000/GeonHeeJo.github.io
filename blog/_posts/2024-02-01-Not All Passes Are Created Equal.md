@@ -219,5 +219,17 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   </p>
 
   - Figure9는 PPM,  DP, PRA, TPA의 관계를 파악하기 위한 그림이다.
-    
 
+## TEAM-BASEDANALYSIS
+- 각 팀의 패스 스타일 분석하고 어떤 패스 유형이 위협적인지 분석한다.
+
+  <p align="center">
+    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png">
+    <br>
+    Figure 11
+  </p>
+
+  - Figure 11은 패스 출발지와 목적지의 XY좌표를 활용하여 클러스터링한 결과이다.
+  - 사각형의 크기는 패스의 빈도수를 색의 강도는 패스의 위험정도를 보여준다.
+  - 표를 보면 클러스터링 1,2,3과 같은 패스 스타일은 위협적이지만, 그만큼 risk도 높아서 높은 스킬이 필요하다. 실제로 클러스터링 1,2,3과 같은 패스는 강팀인 아스날과 맨시티가 많이 수행하는 것을 확인할 수 있다.
+  - 이러한 분석을 통해, 코치틀은 상대팀이 어떤 패스를 할 때 위협적인지를 분석하고 이를 파악하여 전략을 세울 수 있다.
