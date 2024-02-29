@@ -182,7 +182,6 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 실제로 어시스트를 수행한 선수는 Willian이지만, 가장 Reward를 높게 받은 선수는 Fabregas이다. 이는 윌리안의 위험한 지역에서 공을 유지하고 패스하는 능력만 포착하는 것이 아닌 파브레가스의 패스도 Reward가 높다는 것을 식별할 수 있음을 보여준다.
 
 ## Application
-
   1. PPM(Passing Plus Minus)
   - 패스의 스킬이 뛰어난 선수는 누구일까?
   - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
@@ -221,26 +220,4 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
   - Figure9는 PPM,  DP, PRA, TPA의 관계를 파악하기 위한 그림이다.
     
-## VRNN
-- RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
-  
-      1. Prior : 데이터를 접근하기 전 가지고 있는 사전 분포를 통해서 데이터를 추정함.
-          * Encoder가 입력데이터를 받아 Latent Space표현으로 변환하는 역할을 한다면, Prior은 Latent Space에 대한 전체적인 구조와 분포를 정의함으로써 데이터를 생성할 때 일반화능력을 향상시킬 수 있다.
-          * 수식은 t시점 이전(과거)의 정보만을 활용한 분포를 추정하는 식임을 확인할 수 있다.
-  
-  $$\ \text{p}_{\theta}(z_t | x_{<t}, z_{<t}) = \ \phi_{\text{prior}}(h_{t-1})$$
 
-      2. Latent Space : VAE과 같은 역할이다. 학습할 때는 Encoder의 확률 분포를 받고, 데이터 생성할 때는 Prior의 확률분포를 받는다.
-
-      3. Encoder(Inference) : 입력 데이터를 내부 표현(잠재 공간)으로 변환
-      * 학습할 때 사용
-      
-  $$\ \text{q}_{\theta}(z_t | x_{\leq t}, z_{<t}) = \ \phi_{\text{enc}}(x_t,h_{t-1})$$
-
-      4. Decoder(Generation) : Latend Space를 거친 z를 받아 원본 데이터과 같은 형태로 재구성
-      
-  $$\ \text{p}_{\theta}(z_t | z_{\leq t}, x_{<t}) = \ \phi_{\text{dec}}(z_t,h_{t-1})$$
-
-      5. Recurrence : 이전 시점의 hidden state과 입력데이터, Latent Vecor를 활용하여 현재 시점의 hidden state를 업데이터하는 과정이다
-      
-  $$\ \text{h}_t = f(x_t, z_t, h_{t-1})$$
