@@ -161,7 +161,16 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - Pass Risk와 Pass Reward(danger)의 관점에서 분석해보면, Pass Risk가 패배의 원인이 될 수 있음을 확인할 수 있습니다. 실제로, 맨유의 공격 루트 중 상당수가 맨시티의 패스 미스로 인한 역습에서 비롯되었습니다. 이는 경기에서 관찰된 맨시티의 잦은 패스미스가 Pass Risk와 유사함을 확인할 수 있다.
       
     - Figure 7은 선수별 Pass Risk와 Pass Reward를 보여준다. Pass Risk가 높은 선수가 주로 골키퍼과 수비수이며, Pass Danger이 높은 선수가 주로 공격수와 공격형 미드필더인 점을 볼 때, Pass Risk과 Pass Reward가 선수들의 특징을 반영하고 있음을 확인할 수 있다. 
-      
+
+
+## Specific Play Analysis
+- 소유권 과정에서 어느 선수가 가장 중요한 패스(Reward가 높은 패스)를 했는지도 파악할 수 있을까?
+
+    <p align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/6-Figure8-1.png">
+      <br>
+      Figure8
+    </p>
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
