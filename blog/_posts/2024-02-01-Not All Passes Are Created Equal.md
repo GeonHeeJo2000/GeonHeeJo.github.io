@@ -196,7 +196,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - DPS : 어려운 패스의 성공 횟수
   - DPA : 어려운 패스의 총 횟수
     
-  $$\text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} i = \text{DPS}}{\sum_{i=1}^{n} i = \text{DPA}}$$
+ $$\text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{DPS}}{\sum_{i=1}^{n} \text{DPA}}$$
+
 
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
