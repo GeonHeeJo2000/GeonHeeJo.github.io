@@ -165,7 +165,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       Figure8
     </p>    
     
-    - Figure 7은 선수별 Pass Risk와 Pass Reward를 보여준다. Pass Risk가 높은 선수가 주로 골키퍼과 수비수이며, Pass Danger이 높은 선수가 주로 공격수와 공격형 미드필더인 점을 볼 때, Pass Risk과 Pass Reward가 선수들의 특징을 반영하고 있음을 확인할 수 있다. 
+    - Figure 7은 선수별 Pass Risk와 Pass Reward를 보여준다.
+        - Pass Risk가 높은 선수가 주로 골키퍼과 수비수이며, Pass Danger이 높은 선수가 주로 공격수와 공격형 미드필더인 점을 볼 때, Pass Risk과 Pass Reward가 선수들의 특징을 반영하고 있음을 확인할 수 있다. 
 
 
 ## Specific Play Analysis
