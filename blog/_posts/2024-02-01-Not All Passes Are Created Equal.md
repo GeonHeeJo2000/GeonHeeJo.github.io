@@ -23,7 +23,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       
         - 왼쪽 사진은 MATIC가 FABREGAS에게 패스하는 상황이고, 오른쪽 사진은 MATIC가 COSTA에게 패스하는 상황이다. 어느 패스가 더 가치있다고 생각하나요?
         - 우리는 오른쪽 사진이 더 위험하지만, 성공을 한다면 더 높은 shooting chance를 만들 수 있는 패스이다. 그만큼 파브레가스한테 패스하는 오른쪽 상황보다 너 많은 스킬이 필요합니다. 그러나 현재 패스 지표(binary value)에서는 두 상황의 패스 모두 같은 가중치를 갖고 있습니다. 이는 게임 상황을 반영하지 않고 선수과 팀의 지표에 영향을 미칠 수도 있다.
-        - 본 연구에서는 더 나은 대안으로 risk(패스 성공 확률)과 reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
+        - 본 연구에서는 더 나은 대안으로 Risk(패스 성공 확률)과 Reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
  
     <p align="center">
       <img src="../assets/img/figure2.jpg">
@@ -31,11 +31,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       Figure2
     </p>
     
-    - Figure2은 risk과 reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
+    - Figure2은 Risk과 Reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
       
         - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
         - 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
-        - 이러한 risk과 reward를 객관적으로 추정하는 것을 보여줄 예정이다.
+        - 이러한 Risk과 Reward를 객관적으로 추정하는 것을 보여줄 예정이다.
 
 ## DataSet
 - 본 논문에서는 0.1초마다 수집되는 위치정보가 포함된 trackingd-data과 event-name, the ball location, possession등의 이벤트 관련 정보가 들어있는 event-data를 활용했다. 수집한 데이터는 2014/2015~2015/2016 season EPL(English Premier League)의 726경기를 가져왔다.
@@ -51,7 +51,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       
         - 백패스 or 사이드패스에 비해 전방패스의 성공확률이 훨씬 낮다.
         - 경기장을 3등분 했을 때, 우리팀 진영이 first third이고 상대팀 진영이 final third이다. 상대팀 진영과 가까운 공간에서 패스할 수록 패스 성공확률이 더 낮은 것을 볼 수 있다.
-        - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 risk를 측정하는데 활용
+        - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 Risk를 측정하는데 활용
           
 ## Risk and Reward
 
@@ -78,7 +78,9 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
     - Figure5은 패스의 contextual feature를 담은 passing dictionary이다.
         - 우리는 3가지 구조의 contextual feature를 만들어서 예측 성능을 향상시키고자한다.
-    
+
+      <br>
+      
       **1. Micro Feature**
     
         - 대표적인 패스의 context정보 : 속도, 거리, 패스각도, 첫터치 시간등을 사용한다.
@@ -98,12 +100,12 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       **2. Tactical Feature**
     
         - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)ㅇ에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
-        - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 risk과 reward를 향상시킬 것으로 기대함
+        - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 Risk과 Reward를 향상시킬 것으로 기대함
         * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
 
       **3. Formation Feature**
 
-        - 패스의 risk는 defensive-block에도 영향을 미친다. 따라서 우리는 high-block, medium-block, low-block으로 분류한다
+        - 패스의 Risk는 defensive-block에도 영향을 미친다. 따라서 우리는 high-block, medium-block, low-block으로 분류한다
         - defensive-block를 사용하기 위해서 선수과 공의 위치좌표를 클러스터링을 사용했다.
      
         - contextual information를 추가적으로 사용하기 위해 formation clustering도 활용한다.
@@ -129,11 +131,15 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     
     |   |Left|Right|
     |:---:|:---:|:---:|
-    |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 상황|The likelihood of a pass creating a shot chance|
-    |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
-    |Risk|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 패스 성공률이 높음|The likelihood of a pass creating a shot chance|
-    |Reward|진취적인 성격을 띄는 패스가 많으므로 reward가 높은 것을 확인함|The likelihood of a pass creating a shot chance| 
+    |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 역습 상황|상대 수비 조직을 무너트리기 위한 빌드업 단계|
+    |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|Build-up모습과 defensive-block를 갖춘 low-block상황을 보여줌|
+    |risk|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 평균적으로 패스 성공률이 높음|대부|
+    |Reward(danger)|진취적인 성격을 띄는 패스가 많으므로 reward가 높은 것을 확인함|The likelihood of a pass creating a shot chance| 
 
+    * Risk : 패스 성공 확률 -> Risk가 높으면 패스 성공 확률이 높다
+    * risk(위험도) : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
+    * danger(위험성) : Reward과 같은 의미 -> Danger가 높으면, 슛팅할 확률이 높다.
+    <br>
     * 진취적인 패스(Progressive Pass) : 하프라인을 기준으로 우리팀 진영에서 30m이상의 패스 or 상대팀 진영에서 10m이상의 패스
     * 진취적인 패스 관련 기사 : [Progressive Pass](https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
 
