@@ -147,17 +147,17 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         
 ## Match Analysis
 
-        <p align="center">
-              <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png">
-              <br>
-              Figure 6
-            </p>
-        <p align="center">
-              <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png">
-              <br>
-              Figure 6
-            </p>
-        
+    <p align="center">
+          <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png">
+          <br>
+          Figure 6
+        </p>
+    <p align="center">
+          <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png">
+          <br>
+          Figure 6
+        </p>
+
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
