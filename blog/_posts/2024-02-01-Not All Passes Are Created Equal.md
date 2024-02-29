@@ -148,13 +148,14 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 ## Match Analysis
 - 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
     <p align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png" align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png" align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png" align="center">{: width="100%" height="100%"}
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png" align="center">{: width="100%" height="100%"}
       <br>
       Figure 6 & Figure 7
       <figcaption align="center"></figcaption>
     </p>
 
+    - Figure 6 & Figure 7은 2016년 맨유(무리뉴) vs 맨시티(펩 과르디올라)의 경기에서 맨유가 1vs0으로 승리한 경기에 대한 summary를 보여준다.
 
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
