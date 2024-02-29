@@ -205,11 +205,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - 패스를 잘 받는 선수는 누구일까? 
   - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
   
-    <p align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
-      <br>
-      Figure9
-    </p>
+  <p align="center">
+    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
+    <br>
+    Figure9
+  </p>
 
   4. TPA(Total Passes Added)
   - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
