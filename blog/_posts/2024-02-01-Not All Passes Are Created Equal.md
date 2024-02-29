@@ -200,11 +200,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{DPS}_i}{\sum_{i=1}^{n} \text{DPA}_i}
 $$
 
-    <p align="center">
-      <img src="[../assets/figure6.jpg](https://files.oaiusercontent.com/file-uH0Z5GP9WuGZFzV19T937Pii?se=2024-02-29T11%3A28%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D299%2C%20immutable&rscd=attachment%3B%20filename%3Dimage.png&sig=jF9poaQvpihhPLgcoT/gQzNfNIZWN9xR1mcz0GwdTZ0%3D)">
-      <br>
-      Figure8
-    </p>
+  <p align="center">
+    <img src="https://files.oaiusercontent.com/file-uH0Z5GP9WuGZFzV19T937Pii?se=2024-02-29T11%3A28%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D299%2C%20immutable&rscd=attachment%3B%20filename%3Dimage.png&sig=jF9poaQvpihhPLgcoT/gQzNfNIZWN9xR1mcz0GwdTZ0%3D">
+    <br>
+    Figure8
+  </p>
     
 
 ## VRNN
