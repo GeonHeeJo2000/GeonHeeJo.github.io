@@ -146,16 +146,17 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
         
 ## Match Analysis
-
-    <p align="center">
+- 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
+  
+    <p align="left">
           <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/5-Figure6-1.png">
           <br>
           Figure 6
         </p>
-    <p align="center">
+    <p align="right">
           <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/6-Figure7-1.png">
           <br>
-          Figure 6
+          Figure 7
         </p>
 
 ## VRNN
