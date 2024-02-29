@@ -204,7 +204,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
   3. PRA(Passes Received Added)
   - 패스를 잘 받는 선수는 누구일까?
-  - $$XD_{pr}$$
+  - $XD_{pr}$
   
 
 ## VRNN
