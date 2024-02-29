@@ -149,7 +149,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
     <p align="center">
       <img src="../assets/figure6.jpg" align="center" width="300" height="300">
-      <img src="../assets/figure7.jpg" align="center" width="300" height="300">
+      <img src="../assets/img/figure7.jpg" align="center" width="300" height="300">
       <br>
       Figure 6 & Figure 7
       <figcaption align="center"></figcaption>
