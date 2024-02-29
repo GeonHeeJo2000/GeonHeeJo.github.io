@@ -129,7 +129,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     |   |Left|Right|
     |:---:|:---:|:---:|
     |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 상황|The likelihood of a pass creating a shot chance|
-    |Feature|역습 상황인 counter-attack모습과 block를 갖추지 못한 high-block상황을 보여줌|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
+    |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
     |Risk|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 패스 성공률이 높음|The likelihood of a pass creating a shot chance|
     |Reward|진취적인 성격을 띄는 패스가 많으므로 reward가 높은 것을 확인함|The likelihood of a pass creating a shot chance| 
 
