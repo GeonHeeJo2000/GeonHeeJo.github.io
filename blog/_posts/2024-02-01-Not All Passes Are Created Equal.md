@@ -196,7 +196,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - DPS : 어려운 패스의 성공 횟수
   - DPA : 어려운 패스의 총 횟수
     
- $$\text{Difficult Pass Completion} = \frac{\sum_{i=1}^{\infty} \text{DPS}_i}{\sum_{i=1}^{\infty} \text{DPA}_i}$$
+ $$\text{Difficult Pass Completion} = \frac{\sum_{s=1}^{S} (1 - y_{\text{risk}}^s )}{\sum_{i=1}^{I} \text{DPA}_i}$$
+
 
 
 
