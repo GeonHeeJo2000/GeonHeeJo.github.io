@@ -126,7 +126,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       Figure4
     </p>
    
-    - Figure4은 tactical and formation features을 보여준다
+    - Figure4은 tactical and formation features을 보여준다. 노란색 선은 오른쪽 상단에 Pass Risk(패스 성공 확률)과 Pass Reward를 표현한 패스이다.
     <br>
     
     |   |Left|Right|
