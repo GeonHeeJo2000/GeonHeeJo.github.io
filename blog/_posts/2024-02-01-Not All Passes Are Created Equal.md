@@ -190,6 +190,14 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     
   $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
 
+  2. DP(Difficult Pass Completion)
+  - 어려운 패스를 잘 수행하는 선수는 누구일까?
+  * 어려운 패스 : risk가 높은 상위 25%의 패스
+  - DPS : 어려운 패스의 성공 횟수
+  - DPA : 어려운 패스의 총 횟수
+    
+  $$\text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} i = \text{DPS}}{\sum_{i=1}^{n} i = \text{DPA}}$$
+
 ## VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
