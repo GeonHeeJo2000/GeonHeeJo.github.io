@@ -224,7 +224,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 각 팀의 패스 스타일 분석하고 어떤 패스 유형이 위협적인지 분석한다.
 
   <p align="center">
-    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png">
+    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png" width=300>
     <br>
     Figure 11
   </p>
