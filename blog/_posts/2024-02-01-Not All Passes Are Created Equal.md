@@ -140,6 +140,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     * risk(위험도) : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
     * danger(위험성) : Reward과 같은 의미 -> Danger가 높으면, 슛팅할 확률이 높다.
     <br>
+    
     * 진취적인 패스(Progressive Pass) : 하프라인을 기준으로 우리팀 진영에서 30m이상의 패스 or 상대팀 진영에서 10m이상의 패스
     * 진취적인 패스 관련 기사 : [Progressive Pass](https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
 
