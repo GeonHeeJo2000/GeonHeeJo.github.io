@@ -183,10 +183,10 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
 ## Application
 
-    1. PPM(Passing Plus Minus)
-    - 패스의 스킬이 뛰어난 선수는 누구일까?
-    - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
-    - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
+  1. PPM(Passing Plus Minus)
+  - 패스의 스킬이 뛰어난 선수는 누구일까?
+  - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
+  - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
     
   $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
 
