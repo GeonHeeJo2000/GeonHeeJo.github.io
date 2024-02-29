@@ -133,11 +133,11 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     |:---:|:---:|:---:|
     |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 역습 상황|상대 수비 조직을 무너트리기 위한 빌드업 단계|
     |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|Build-up모습과 defensive-block를 갖춘 low-block상황을 보여줌|
-    |risk|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 평균적으로 risk가 낮음|빌드업단계에서 패스는 risk가 낮고, 침투패스는 risk가 높음|
+    |**risk**|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 평균적으로 risk가 낮음|빌드업단계에서 패스는 risk가 낮고, 침투패스는 risk가 높음|
     |Reward(danger)|진취적인 성격을 띄는 패스가 많으므로 평균적으로 reward(danger)가 높은 것을 확인함|측면패스가 많으므로 평균적으로 reward(danger)이 낮음| 
 
     * Risk : 패스 성공 확률 -> Risk가 높으면 패스 성공 확률이 높다
-    * risk(위험도) : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
+    * **risk(위험도)** : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
     * danger(위험성) : Reward과 같은 의미 -> Danger가 높으면, 슛팅할 확률이 높다.
     <br>
     
