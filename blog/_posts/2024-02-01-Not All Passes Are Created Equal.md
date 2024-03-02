@@ -195,11 +195,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   * 어려운 패스 : risk가 높은 상위 25%의 패스
   - DPS : 어려운 패스의 성공 횟수
   - DPA : 어려운 패스의 총 횟수
-    
-  <p align="center">
-    <img src="https://files.oaiusercontent.com/file-uH0Z5GP9WuGZFzV19T937Pii?se=2024-02-29T11%3A28%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D299%2C%20immutable&rscd=attachment%3B%20filename%3Dimage.png&sig=jF9poaQvpihhPLgcoT/gQzNfNIZWN9xR1mcz0GwdTZ0%3D">
-    <br>
-  </p>
+
+  $$ \text{Difficult Pass Completion} = \frac{\sum_{s=1}^{S} (i = text{DPS})}{\sum_{u=1}^{U} (i = text{DPA})} $$
 
   3. PRA(Passes Received Added)
   - 패스를 잘 받는 선수는 누구일까? 
