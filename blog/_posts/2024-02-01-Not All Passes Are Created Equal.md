@@ -196,19 +196,19 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - DPS : 어려운 패스의 성공 횟수
   - DPA : 어려운 패스의 총 횟수
 
-  $$ Difficult Pass Completion = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{DPA}}$$
+  $$ \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
 
   3. PRA(Passes Received Added)
   - 패스를 잘 받는 선수는 누구일까? 
   - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
 
-  $$ Passes Received Added = 1 - XD_pr $$
+  $$ \text{Passes Received Added} = 1 - XD_pr $$
   
   4. TPA(Total Passes Added)
   - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
   - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
     
-  $$\text{TPA(Total Passes Added} = PPM(Passing Plus Minus) + PRA(Passes Received Added)$$
+  $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)} $$
 
   <p align="center">
     <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
