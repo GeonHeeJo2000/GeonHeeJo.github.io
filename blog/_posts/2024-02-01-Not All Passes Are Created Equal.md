@@ -81,7 +81,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
       <br>
       
-      **1. Micro Feature**
+        **1. Micro Feature**
     
         - 대표적인 패스의 context정보 : 속도, 거리, 패스각도, 첫터치 시간등을 사용한다.
         - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
@@ -182,41 +182,40 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 실제로 어시스트를 수행한 선수는 Willian이지만, 가장 Reward를 높게 받은 선수는 Fabregas이다. 이는 윌리안의 위험한 지역에서 공을 유지하고 패스하는 능력만 포착하는 것이 아닌 파브레가스의 패스도 Reward가 높다는 것을 식별할 수 있음을 보여준다.
 
 ## Application
-
-      1. PPM(Passing Plus Minus)
-      - 패스의 스킬이 뛰어난 선수는 누구일까?
-      - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
-      - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
-        
-      $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
-    
-      2. DP(Difficult Pass Completion)
-      - 어려운 패스를 잘 수행하는 선수는 누구일까?
-      * 어려운 패스 : risk가 높은 상위 25%의 패스
-      - DPS : 어려운 패스의 성공 횟수
-      - DPA : 어려운 패스의 총 횟수
-    
-      $$ \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
-    
-      3. PRA(Passes Received Added)
-      - 패스를 잘 받는 선수는 누구일까? 
-      - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
-    
-      $$ \text{Passes Received Added} = 1 - XD_pr $$
+    1. PPM(Passing Plus Minus)
+    - 패스의 스킬이 뛰어난 선수는 누구일까?
+    - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
+    - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
       
-      4. TPA(Total Passes Added)
-      - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
-      - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
-        
-      $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)} $$
+    $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
+  
+    2. DP(Difficult Pass Completion)
+    - 어려운 패스를 잘 수행하는 선수는 누구일까?
+    * 어려운 패스 : risk가 높은 상위 25%의 패스
+    - DPS : 어려운 패스의 성공 횟수
+    - DPA : 어려운 패스의 총 횟수
+  
+    $$ \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
+  
+    3. PRA(Passes Received Added)
+    - 패스를 잘 받는 선수는 누구일까? 
+    - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
+  
+    $$ \text{Passes Received Added} = 1 - XD_pr $$
     
-      <p align="center">
-        <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
-        <br>
-        Figure9
-      </p>
-    
-      - Figure9는 PPM,  DP, PRA, TPA의 관계를 파악하기 위한 그림이다.
+    4. TPA(Total Passes Added)
+    - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
+    - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
+      
+    $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)} $$
+  
+    <p align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
+      <br>
+      Figure9
+    </p>
+  
+    - Figure9는 PPM,  DP, PRA, TPA의 관계를 파악하기 위한 그림이다.
 
 ## TEAM-BASEDANALYSIS
 - 각 팀의 패스 스타일 분석하고 어떤 패스 유형이 위협적인지 분석한다.
