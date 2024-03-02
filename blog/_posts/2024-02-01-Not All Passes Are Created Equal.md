@@ -198,6 +198,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
   $$ \text{Difficult Pass Completion} = \frac{$$\sum_{s=1}^{S} i$$} {\sum_{u=1}^{U} (i)} $$
 
+  Difficult Pass Completion = \frac{\sum_{i=1}^{n} i = DPS}{\sum_{i=1}^{n} i = DPA}
+
   3. PRA(Passes Received Added)
   - 패스를 잘 받는 선수는 누구일까? 
   - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
