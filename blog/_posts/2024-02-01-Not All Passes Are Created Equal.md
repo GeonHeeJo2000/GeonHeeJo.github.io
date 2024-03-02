@@ -200,7 +200,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - DPA : 어려운 패스의 총 횟수
       
     <p align="center">
-        \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}
+        $$\text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
     </p>  
   
     
@@ -209,7 +209,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
   
     <p align="center">
-        \text{Passes Received Added} = 1 - XD_pr
+        $$\text{Passes Received Added} = 1 - XD_pr$$
     </p>      
       
     **4. TPA(Total Passes Added)**
@@ -217,7 +217,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
 
     <p align="center">
-        \text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)}
+        $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)}$$
     </p>    
   
     <p align="center">
