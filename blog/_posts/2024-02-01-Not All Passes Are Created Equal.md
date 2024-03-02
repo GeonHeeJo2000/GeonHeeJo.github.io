@@ -182,6 +182,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
         - 실제로 어시스트를 수행한 선수는 Willian이지만, 가장 Reward를 높게 받은 선수는 Fabregas이다. 이는 윌리안의 위험한 지역에서 공을 유지하고 패스하는 능력만 포착하는 것이 아닌 파브레가스의 패스도 Reward가 높다는 것을 식별할 수 있음을 보여준다.
 
 ## Application
+
   1. PPM(Passing Plus Minus)
   - 패스의 스킬이 뛰어난 선수는 누구일까?
   - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
