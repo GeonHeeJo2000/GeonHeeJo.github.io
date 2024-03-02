@@ -183,35 +183,36 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 
 ## Application
 - 앞서 구한 risk과 reward를 활용하여 여러 지표들을 계산해서 특정 스킬이 뛰어난 선수들을 찾아보자.
+  
     1. PPM(Passing Plus Minus)
-      - 패스의 스킬이 뛰어난 선수는 누구일까?
-      - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
-      - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
-    
-      <p align="center">
-          \text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)
-      </p>
+    - 패스의 스킬이 뛰어난 선수는 누구일까?
+    - S : Successful -> 어려운 패스를 많이 성공했으면 PPM이 높아진다.
+    - U : Unsuccessful -> 쉬운 패스도 실패를 많이하면 PPM은 낮아진다.
+  
+    <p align="center">
+        \text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)
+    </p>
   
     2. DP(Difficult Pass Completion)
-      - 어려운 패스를 잘 수행하는 선수는 누구일까?
-      * 어려운 패스 : risk가 높은 상위 25%의 패스
-      - DPS : 어려운 패스의 성공 횟수
-      - DPA : 어려운 패스의 총 횟수
-    
-      $$ \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
+    - 어려운 패스를 잘 수행하는 선수는 누구일까?
+    * 어려운 패스 : risk가 높은 상위 25%의 패스
+    - DPS : 어려운 패스의 성공 횟수
+    - DPA : 어려운 패스의 총 횟수
+  
+    $$ \text{Difficult Pass Completion} = \frac{\sum_{i=1}^{n} \text{i=DPS}}{\sum_{i=1}^{n} \text{i=DPA}}$$
   
     3. PRA(Passes Received Added)
-      - 패스를 잘 받는 선수는 누구일까? 
-      - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
-    
-      $$ \text{Passes Received Added} = 1 - XD_pr $$
+    - 패스를 잘 받는 선수는 누구일까? 
+    - $XD_{pr}$ : 어려운 패스를 잘 받을 확률 -> 패스 성공 확률이 낮은 어려운 패스들을 선수가 많이 받으면, PRA가 높아진다.
+  
+    $$ \text{Passes Received Added} = 1 - XD_pr $$
       
     4. TPA(Total Passes Added)
-      - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
-      - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
-        
-      $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)} $$
-  
+    - 모든 것을 고려했을 때, 공 소유에 긍정적인 기여를 하는 선수는 누구일까?
+    - TPA = PPM(Passing Plus Minus) + PRA(Passes Received Added)
+      
+    $$\text{TPA(Total Passes Added} = \text{PPM(Passing Plus Minus)} + \text{PRA(Passes Received Added)} $$
+
     <p align="center">
       <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/7-Figure9-1.png">
       <br>
