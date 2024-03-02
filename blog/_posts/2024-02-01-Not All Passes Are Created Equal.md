@@ -190,6 +190,10 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       
       $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
   
+      <p align="center">
+          $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
+      </p>
+  
     2. DP(Difficult Pass Completion)
       - 어려운 패스를 잘 수행하는 선수는 누구일까?
       * 어려운 패스 : risk가 높은 상위 25%의 패스
