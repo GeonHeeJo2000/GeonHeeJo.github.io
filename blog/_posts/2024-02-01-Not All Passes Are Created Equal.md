@@ -157,7 +157,8 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     - Figure 6은 2016년 맨시티(펩 과르디올라) vs 맨유(무리뉴)의 경기에서 맨시티가 0 vs 1으로 패배한 경기에 대한 summary를 보여준다.
         - Basic summary : 점유율(55% vs 45%), 총 패스수(402 vs 266), 패스성공율(88% vs 82%)임을 볼 수 있다. 그러나, 이러한 basic summary를 보면 의문점이 들 수 밖에 없다. 그럼 왜 진거지에 대한 의문을 제기할 수 밖에 없다. 즉, Basic summary만으로는 분석에 한계가 있다.
         - Pass Risk and Pass Reward(danger) : 맨시티는 맨유에 비하여 더 많은 dangerous pass(131 vs 72)를 했고 더 Danger(16% vs 13.5%)를 했지만, Risk(14% vs 17%)는 더 낮았다. 
-        - Pass Risk와 Pass Reward(danger)의 관점에서 분석해보면, Pass Risk가 패배의 원인이 될 수 있음을 확인할 수 있습니다. 실제로, 맨유의 공격 루트 중 상당수가 맨시티의 패스 미스로 인한 역습에서 비롯되었습니다. 이는 경기에서 관찰된 맨시티의 잦은 패스미스가 Pass Risk와 유사함을 확인할 수 있다.
+        - Pass Risk와 Pass Reward(danger)의 관점에서 분석해보면, Pass Risk가 패배의 원인이 될 수 있음을 확인할 수 있습니다. 맨시티는 패스 성공 확률이 낮은 패스를 많이 수행했고, 위험한 패스들을 맨유보다 더 많이 실패했고 이것이 패배의 원인 중 하나이지 않을까 생각이 든다.
+        - 실제로, 맨유의 공격 루트 중 상당수가 맨시티의 패스 미스로 인한 역습에서 비롯되었습니다. 이는 경기에서 관찰된 맨시티의 잦은 패스미스가 Pass Risk와 유사함을 확인할 수 있다.
   
     <p align="center">
       <img src="../assets/img/figure7.jpg">
@@ -227,12 +228,14 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
     </p>
 
   - Figure9는 PPM,  DP, PRA, TPA의 관계를 파악하기 위한 그림이다.
-
+  - 왼쪽 그림은 패스의 스킬과 어려운 패스의 스킬이 모두 뛰어난 선수인 외질, 미켈, 파브레가스등을 볼 수 있다. 그러나 전성기에서 한참 지난 맨유의 레전드 루니 선수는 패스 스킬이 매우 낮은 것을 확인할 수 있다
+  - 오른쪽 그림은 PPM과 PRA관계 뿐 아니라 원의 크기를 나타낸 TPA도 표현할 수 있었다. 실제로 3가지 지표가 매우 뛰어난 선수인 산체즈 조슈아 킹, 아구에로등을 볼 수 있는데, 이 선수들은 주로 CF(Center Forward)에서 뛰는 선수들이다.
+  - 
 ## TEAM-BASEDANALYSIS
 - 각 팀의 패스 스타일 분석하고 어떤 패스 유형이 위협적인지 분석한다.
 
   <p align="center">
-    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png" width=300>
+    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png" width=1000>
     <br>
     Figure 11
   </p>
