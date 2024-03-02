@@ -191,7 +191,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
       $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
   
       <p align="center">
-          $$\text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)$$
+          \text{Passing Plus/Minus} = \sum_{s=1}^{S} (1 - y_{risk}^\text{s}) - \sum_{u=1}^{U} (y_{risk}^\text{u} - 1)
       </p>
   
     2. DP(Difficult Pass Completion)
