@@ -149,7 +149,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
 - 이제 본 연구에서 제안하는 Pass Risk과 Pass Reward를 활용하여 실제 경기에서 어떻게 분석할 수 있는지 확인해보자.
 
     <p align="center">
-      <img src="../assets/figure6.jpg">
+      <img src="../assets/img/figure6.jpg">
       <br>
       Figure8
     </p>
@@ -233,12 +233,12 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - 
 ## TEAM-BASEDANALYSIS
 - 각 팀의 패스 스타일 분석하고 어떤 패스 유형이 위협적인지 분석한다.
-
-  <p align="center">
-    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/250px/9-Figure11-1.png" width=1000>
-    <br>
-    Figure 11
-  </p>
+  
+    <p align="center">
+      <img src="../assets/img/figure11.jpg">
+      <br>
+      Figure11
+    </p>
 
   - Figure 11은 패스 출발지와 목적지의 XY좌표를 활용하여 클러스터링한 결과이다.
   - 사각형의 크기는 패스의 빈도수를 색의 강도는 패스의 위험정도를 보여준다.
