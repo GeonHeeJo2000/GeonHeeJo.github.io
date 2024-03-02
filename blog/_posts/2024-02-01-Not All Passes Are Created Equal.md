@@ -196,7 +196,7 @@ subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Ris
   - DPS : 어려운 패스의 성공 횟수
   - DPA : 어려운 패스의 총 횟수
 
-  $$ \text{Difficult Pass Completion} = \frac{\sum_{s=1}^{S} i = DPS} {\sum_{u=1}^{U} (i = DPA)} $$
+  $$ \text{Difficult Pass Completion} = \frac{\sum_{s=1}^{S} i} {\sum_{u=1}^{U} (i)} $$
 
   3. PRA(Passes Received Added)
   - 패스를 잘 받는 선수는 누구일까? 
