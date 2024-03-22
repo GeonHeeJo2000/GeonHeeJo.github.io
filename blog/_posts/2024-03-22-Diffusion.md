@@ -118,7 +118,7 @@ title: Diffusion
 - 원본 데이터($$x_0$$)의 분포를 찾아내는 것이 목적이므로 $$p(x_0)를 maximize해야한다.
 
     <p align="center">
-      <img src="../assets/img/구조비교3.JPG">
+      <img src="../assets/img/구조비교3.jpg">
       <br>
       Loss
     </p>
