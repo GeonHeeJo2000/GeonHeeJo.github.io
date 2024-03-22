@@ -122,6 +122,6 @@ title: Diffusion
       Loss
     </p>
 
-    - $$L_{T}(Regularization)$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 분포과 q가 noise($$x_{t}$$)를 생성하는 분포간의 차이 최소화
-    - $$L_{t-1}$$ : q와 p의 분포 차이를 최소화
+    - $$L_{T}(Regularization)$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 확률분포과 q가 noise($$x_{t}$$)를 생성하는 확률분포간의 차이 최소화
+    - $$L_{t-1}(Denoising Process)$$ : p과 q의 확룰 분포를 최소화
     - $$L_{0}(Reconstruction)$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화 
