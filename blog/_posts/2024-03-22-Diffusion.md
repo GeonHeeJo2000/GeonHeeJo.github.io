@@ -10,7 +10,7 @@ title: Diffusion
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
     <p align="center">
-      <img src="https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/%EC%83%9D%EC%84%B1%EB%AA%A8%EB%8D%B8%EC%82%AC%EC%A7%84.jpg">
+      <img src="../assets/img/%EC%83%9D%EC%84%B1%EB%AA%A8%EB%8D%B8%EC%82%AC%EC%A7%84.jpg">
       <br>
       Generative Example
     </p> 
@@ -118,7 +118,7 @@ title: Diffusion
 - ㅅㅂ좀 되라고
   
     <p align="center">
-      <img src="https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/%EA%B5%AC%EC%A1%B0%EB%B9%84%EA%B5%903.jpg">
+      <img src="../assets/img/%EA%B5%AC%EC%A1%B0%EB%B9%84%EA%B5%903.jpg">
       <br>
       Loss
     </p>
