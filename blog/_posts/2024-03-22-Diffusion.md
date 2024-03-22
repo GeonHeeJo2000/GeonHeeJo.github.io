@@ -21,26 +21,64 @@ subtitle: Denoising Diffusion Probabilistic Models
     - Generative Model사진은 생성모델의 대표적인 4가지를 설명한 그림이다.
       
         - GAN(Generative Adversarial Networks) : 생성자(Generative Model)는 noise(z)로부터 가짜이미지를 생성하면, 판별자(Descriminator)가 진짜와 가짜를 판단한다. 이렇게 두 네트워크는 적대적인 방식으로 서로를 개선하면서 학습한다.
-        - VAE(Variational Auto-Encoder) : Encoder를 통해 입력데이터의 특성을 파악한 latent vector z를 만든 후에 z를 통해서 원본 데이터과 유사한 데이터를 샘플링한다. 
+        - VAE(Variational Auto-Encoder) : Encoder를 통해 입력데이터의 특성을 파악한 latent vector z를 만든 후에 z를 통해서 원본 데이터과 유사한 데이터를 생성한다. 
         - Flow-based models : VAE과 유사하지만, Encoder가 역함수(inverse)가 존재하는 function의 합성함수로 Encoder로 정의하고, Decoder에서 함성함수의 역함수로 정의한 방식이다.
-        - Diffusion models : 데이터에 점진적으로 noise를 추가하고, noise만 남은 데이터를 바탕으로 다시 noise를 제거하면서 원본 데이터과 유사하게 생성하는 방식이다.
+        - Diffusion models : 데이터에 점진적으로 noise를 추가하고, noise만 남은 데이터를 바탕으로 다시 복원하면서 원본 데이터과 유사한 데이터를 생성한다
 
 ### Diffusion model
-- 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
+- Data에 noise를 조금씩 더하거나 noise로부터 복원해가는 과정을 통해 데이터를 생성하는 모델
 
-  ```markdown
-  1. Encoder : 입력 데이터를 내부 표현(잠재 공간)으로 변환 -> 확률 분포를 정의하는 평균과 표준편차 출력
-  
-  2. Latent Space : AE과 다르게 VAE에서는 Latent Space에서 noise를 추가함(동일한 데이터 생성 방지)
-  * 정규분포로 부터 하나의 noise를 샘플링한 후 이를 바탕으로 Latent vector z를 얻는데, 이를 reparameterize이라 한다.
-  
-  3. Decoder : Latend Space를 거친 z를 받아 원본 데이터과 같은 형태로 재구성
-  ```
-  
-- Model code github : [Model](https://github.com/dariocazzani/pytorch-AE/blob/master/models/VAE.py)
-  
+    <p align="center">
+      <img src="../assets/img/Diffusion image.JPG">
+      <br>
+      Diffusion Model
+    </p>
+      
+    - Diffusion Model사진은 Diffusion Model의 아키텍처이다.
+        - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
 
-![Model](https://blog.kakaocdn.net/dn/b30Uzl/btrxY4wKngj/SucVwitDrRtQvi1xTHdrR0/img.png)
+
+- Forward Process(diffusion process) : 
+    <p align="center">
+      <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
+      <br>
+      Forward Porcess
+    </p>
+
+    - Foward Process는 원본데이터($x_0$)으로부터 noise를 더해가면서 최종 noise($x_t$)로 가는 과정이다
+    - $\beta_t$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $\beta$가 1이면 한번에 noise가 된다는 의미이다.
+    - 기존 Diffusion Model은 Forward Process에서 $\beta$를 학습하는것이 목적이다. 그러나 본 논문에서는 $\beta$를 $10^-4$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로 사용한다. 즉, 학습을 하지 않고 고정된 상수값만 사용한다는 뜻이다.
+    - 계산의 복잡성도 줄일 수 있고, 실제로 학습하지 않아도 성능이 괜찮게 나와서 fixed constant를 사용함.
+
+    ```python
+    def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
+        if schedule == 'linear':
+            betas = torch.linspace(start, end, n_timesteps)
+        elif schedule == "quad":
+            betas = torch.linspace(start ** 0.5, end ** 0.5, n_timesteps) ** 2
+        elif schedule == "sigmoid":
+            betas = torch.linspace(-6, 6, n_timesteps)
+            betas = torch.sigmoid(betas) * (end - start) + start
+        return betas
+    
+    def forward_process(x_start, n_steps, noise=None):
+        x_sequence = [x_start] # initial 'x_seq' which is filled with original data at first.
+        for n in range(n_steps):
+            beta_t = noise[n]
+            x_t_1 = x_sequence[-1]
+            epsilon_t_1 = torch.rand_like(x_t_1)
+    
+            x_t = (torch.sqrt(1-beta_t) * x_t_1) + (torch.sqrt(beta_t) * epsilon_t_1)
+            x_sequence.append(x_t)
+        return x_sequence
+    ```
+    
+- Reverse Process(diffusion process) : 
+    <p align="center">
+      <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
+      <br>
+      Forward Porcess
+    </p>
 
 ### VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
