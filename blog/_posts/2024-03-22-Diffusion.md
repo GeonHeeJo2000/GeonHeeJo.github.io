@@ -37,7 +37,8 @@ subtitle: Denoising Diffusion Probabilistic Models
         - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
 
 
-**Forward Process(diffusion process)**
+    **Forward Process(diffusion process)**
+
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
@@ -72,17 +73,18 @@ subtitle: Denoising Diffusion Probabilistic Models
         return x_sequence
     ```
     
-**Reverse Process(diffusion process)**
+    **Reverse Process(diffusion process)**
+    
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
       Forward Porcess
     </p>
-
+    
     - Reverse Process는 noise($x_t$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
     - 기존 Diffusion Model은 가우시안분포를 학습하는 것이 목적이기 때문에 mean과 variance를 학습하는 것이 목적이다.
     * variance대신에 beta를 활용하기도 한다.(mean만 학습에 사용)
-
+    
     ```python
     def p_mean_variance(model, x, t):
         # Make model prediction
@@ -93,6 +95,7 @@ subtitle: Denoising Diffusion Probabilistic Models
         var = torch.exp(log_var)
         return mean, log_var
     ```
+    
 ### VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
