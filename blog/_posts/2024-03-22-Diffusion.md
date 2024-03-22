@@ -5,8 +5,7 @@ title: Diffusion
 
 이것은 Diffusion Model에 대한 설명입니다. 
 
-
-### Generative Model
+### Generative Model 왜 안되는건데
 - 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
