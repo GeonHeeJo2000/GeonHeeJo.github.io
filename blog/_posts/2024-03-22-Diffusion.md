@@ -40,13 +40,13 @@ subtitle: Denoising Diffusion Probabilistic Models
     **Forward Process(diffusion process)**
 
     <p align="center">
-      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvwAn1%2FbtrNwkjFAn3%2FAvT141LiMsckI2XpEZtYSK%2Fimg.png">
+      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
       Forward Porcess
     </p>
 
-    - Foward Process는 원본데이터($$x_0$$)으로부터 noise를 더해가면서 최종 noise($$x_t$$)로 가는 과정이다
-    - $$\beta_t$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $$\beta$$가 1이면 한번에 noise가 된다는 의미이다.
+    - Foward Process는 원본데이터($$x_{0}$$)으로부터 noise를 더해가면서 최종 noise($$x_t$$)로 가는 과정이다
+    - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $$\beta$$가 1이면 한번에 noise가 된다는 의미이다.
     - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다.      
     - $$\beta$$를 $$10^-4$$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)
 
