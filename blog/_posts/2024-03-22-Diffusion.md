@@ -96,63 +96,12 @@ subtitle: Denoising Diffusion Probabilistic Models
         return mean, log_var
     ```
     
-### VRNN
-- RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
-  
-  ```markdown
-  1. Prior : 데이터를 접근하기 전 가지고 있는 사전 분포를 통해서 데이터를 추정함.
-      * Encoder가 입력데이터를 받아 Latent Space표현으로 변환하는 역할을 한다면, Prior은 Latent Space에 대한 전체적인 구조            와 분포를 정의함으로써 데이터를 생성할 때 일반화능력을 향상시킬 수 있다.
-      * 수식은 t시점 이전(과거)의 정보만을 활용한 분포를 추정하는 식임을 확인할 수 있다.
-  ```
+### Loss
+- Forward Process과 Reverse Process를 학습하기 최적화하기 위한 loss
 
-  $$\ \text{p}_{\theta}(z_t | x_{<t}, z_{<t}) = \ \phi_{\text{prior}}(h_{t-1})$$
-
-  ```markdown
-  2. Latent Space : VAE과 같은 역할이다. 학습할 때는 Encoder의 확률 분포를 받고, 데이터 생성할 때는 Prior의 확률분포를 받는다.
-  
-  3. Encoder(Inference) : 입력 데이터를 내부 표현(잠재 공간)으로 변환
-  * 학습할 때 사용
-  ```
-  
-  $$\ \text{q}_{\theta}(z_t | x_{\leq t}, z_{<t}) = \ \phi_{\text{enc}}(x_t,h_{t-1})$$
-
-  ```markdown
-  4. Decoder(Generation) : Latend Space를 거친 z를 받아 원본 데이터과 같은 형태로 재구성
-  ```
-  
-  $$\ \text{p}_{\theta}(z_t | z_{\leq t}, x_{<t}) = \ \phi_{\text{dec}}(z_t,h_{t-1})$$
-  
-  ```markdown
-  5. Recurrence : 이전 시점의 hidden state과 입력데이터, Latent Vecor를 활용하여 현재 시점의 hidden state를 업데이터하는 과정이다
-  ```
-  
-  $$\ \text{h}_t = f(x_t, z_t, h_{t-1})$$
-  
-- Loss : VAE의 손실 함수는 주로 두 부분으로 구성됩니다: 재구성 손실(reconstruction loss)과 정규화 손실(Kullback-Leibler divergence). 이 두 요소를 합쳐 Evidence Lower Bound (ELBO)라고 하며, VAE의 목표는 ELBO를 최대화하는 것입니다.
-  
-  ```markdown
-  1. Reconstruction Loss
-        - 입력 데이터와 출력 데이터 간의 차이를 줄입니다. 모델이 데이터를 얼마나 잘 재구성하는지 측정하는 지표
-  
-  2. Regularization Loss
-        - 모델이 단순히 데이터를 재생산하는 것을 넘어서, 일반적인 데이터 패턴을 이해하고 새로운 데이터를 생성할 수 있게 하는 정규화 역할(입력 데이터의 복사본 생성 방지)
-        - KL divergence는 Trajectory관점에서 다음 위치를 예측할 때, 이전 위치와 동일한 위치를 생성하지 않도록 하기 위한 것과 유사합니다. 즉, 모델이 데이터의 다양성을 유지하고 예측 가능한 패턴을 학습하도록 유도합니다.
-  ```
-  
-- Model code link : [Model](https://github.com/emited/VariationalRecurrentNeuralNetwork/blob/master/model.py)
-  
-
-![image](https://github.com/GunHeeJoe/GunHeeJoe.github.io/assets/112679136/19c89399-9ba1-463e-8867-ea61078dec90)
-
-
-
-
-### GVRNN
-- GVRNN은 VRNN에 GNN기법을 추가한 것이다. 축구의 경우 각 선수들의 Trajectory는 다른 선수들의 영향을 받기 때문에 GNN기법도 추가한 것이다.
-* 다중 에이전트의 상호작용을 학습
-- Prior, Encoder(Inference), Decoder(Generation)를 통해 나온 확률분포에 GNN를 추가하므로써 선수들의 상호작용도 학습하는 구조
-- Model code link : [Model](https://github.com/keisuke198619/C-OBSO/blob/main/vrnn/models/gvrnn.py)
-  
-
-![Model](https://github.com/GunHeeJoe/GunHeeJoe.github.io/assets/112679136/605202a0-3cf4-422e-87f5-fa1f8932cfcb)
+    <p align="center">
+      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHCh8p%2FbtrNv8RlXMI%2FgSKxU6CFtxUMQPhOtWNUV0%2Fimg.png">
+      <br>
+      Loss
+    </p>
 
