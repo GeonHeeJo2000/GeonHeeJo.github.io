@@ -1,0 +1,44 @@
+---
+layout: post
+title: VAEP
+subtitle: Valuing Actions by Estimating Probabilities
+gh-repo: GunHeeJoe/VAEP
+gh-badge: [star]
+tags: [test, markdown]
+comments: true
+---
+
+이것은 한국정보과학회에 제출한 "딥러닝 기반 축구 경기 중 플레이 가치 평가 알고리즘"에 대한 연구 설명입니다. 플레이 가치 평가 알고리즘중 가장 유명한 지표인 VAEP(Valuing Actions by Estimating Probabilities)를 더욱 발전시키긴 위해 다양한 연구를 시도해보았습니다.
+
+### 축구 데이터 형식?
+1. Event Stream Data : 이벤트를 수행하는 선수의 정보만 들어있는 데이터
+2. Tracking Data : Event Stream Data + 모든 선수들의 위치정보가 들어있는 데이터
+3. StatsBomb 360 Data : Event Stream Data과 Tracking Data의 중간형식으로 Event Stream Data + 카메라에 포착된 일부선수들의 위치정보만 포함하는 데이터
+- Tracking Data가 가장 좋은 데이터이지만, cost가 너무 높아서 제공받을 수 있는 데이터 수가 매우 적다.
+
+![Data](../assets/img/SoccerDataSet.jpg)
+
+### Model
+- 본 연구에서 제안한 모델 아키텍처는 DCN(Deep Cross Network)를 활용하였다. 물론 DCN은 수치형 속성만 존재하므로 모델 구조의 변경은 필요하다. 축구 데이터는 범주형 속성(액션유형, 팀, 선수, 터치 부위, 행동 결과등)도 필요하기 때문에 두가지 속성을 조합하는 문제도 해결해야 한다.
+
+![Model](../assets/img/Model1.jpg)
+
+### Data Imbalance
+- 축구는 득점/실점이 매우 적은 스포츠이므로 VAEP의 라벨 특성상 데이터 불균형문제는 불가피한다. 기존 논문에서 사용한 Boosting기반의 알고리즘은 데이터 불균형을 자체적으로 해결하기 때문에 문제가 없었지만, 딥러닝은 이 문제를 해결해줘야한다. 그래서 본 연구에서는 데이터 불균형 문제를 해결하기 위해 오버샘플링을 활용한다. 실제로 불균형 문제를 해결했을 때, 딥러닝의 성능도 더 좋아지는 것을 확인할 수 있다.
+  
+![Count](../assets/img/DataCount.jpg)
+  
+### Evaluation
+
+##### 정량적 분석
+- 기존 VAEP에서 제안한 모델은 ROC AUC가 80.18/88.12%인 반면, DCN 알고리즘은 80.31/88.60% 성능을 보여준다. DCN 다중 분류를 오버샘플링 없이 시행했을 때는 이진 분류보다 더 복잡한 다중 분류의 결정 경계(decision boundary)를 명확하게 학습하지 못하지만, 오버샘플링 후에는 더 좋은 성능을 보여준다.
+- 성능표를 보면 기존 논문에서 제안한 Boosting기법과의 정량적인 차이가 없다는 것은 부인할 수가 없다. 실제로 여러 파인튜닝작업을 거쳤을 때는 Boosting을 뛰어넘지는 못했다. 본 연구에서 정량적 분석의 가치는 크게 없지만, 나는 정성적 분석의 차이를 강조하고 싶다.
+  
+![E1](../assets/img/정량사진.jpg)
+
+##### 정성적 분석
+- 만약 여러분에게 각 이벤트의 가치를 평가하라고 하면, 어느 이벤트를 수행한 선수를 가장 높게 평가할 것인가요? VAEP를 보지않고 이벤트 장면만 보고 생각해보세요. 실제로, 여러분의 의견과 AI의 의견을 비교하는 것도 재밌을 것 같네요. 
+- Boosting기반의 알고리즘은 슛에만 유독 높은 VAEP값을 부여합니다. 그러나, DCN은 슛이 아닌 이전 액션에 더 높은 가치를 부여합니다. 정성적 평가는 사람마다 해석이 다를 수 있지만, 이벤트 데이터를 기준으로 볼 때 DCN이 플레이의 가치를 더 정확하게 분석하는 것 같지 않나요?
+- 조금 더 디테일한 분석은 [README.md](https://github.com/GunHeeJoe/VAEP/blob/main/README.md)에 남겨두겠습니다.
+  
+![E2](../assets/img/정성사진.jpg)
