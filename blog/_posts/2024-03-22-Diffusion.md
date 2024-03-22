@@ -1,44 +1,103 @@
 ---
 layout: post
-title: VAEP
-subtitle: Valuing Actions by Estimating Probabilities
-gh-repo: GunHeeJoe/VAEP
-gh-badge: [star]
-tags: [test, markdown]
-comments: true
+title: GVRNN
+subtitle: Graph Variational Recurrent Neural Networks
 ---
 
-이것은 한국정보과학회에 제출한 "딥러닝 기반 축구 경기 중 플레이 가치 평가 알고리즘"에 대한 연구 설명입니다. 플레이 가치 평가 알고리즘중 가장 유명한 지표인 VAEP(Valuing Actions by Estimating Probabilities)를 더욱 발전시키긴 위해 다양한 연구를 시도해보았습니다.
+이것은 2022 MLSA Workshop에 제출한 "Evaluation of creating scoring opportunities for teammates in soccer via trajectory prediction"논문을 바탕으로 제가 공부한 GVRNN에 대한 설명입니다.
 
-### 축구 데이터 형식?
-1. Event Stream Data : 이벤트를 수행하는 선수의 정보만 들어있는 데이터
-2. Tracking Data : Event Stream Data + 모든 선수들의 위치정보가 들어있는 데이터
-3. StatsBomb 360 Data : Event Stream Data과 Tracking Data의 중간형식으로 Event Stream Data + 카메라에 포착된 일부선수들의 위치정보만 포함하는 데이터
-- Tracking Data가 가장 좋은 데이터이지만, cost가 너무 높아서 제공받을 수 있는 데이터 수가 매우 적다.
+- 위 논문은 GVRNN을 활용하여 선수들의 trajectory를 예측하는 문제를 다루고 있습니다. 논문에 대해서는 본 blog에서 설명하지 않고 GVRNN에 대해서만 설명합니다. 
+- GVRNN을 설명하려면, 결국 AE(AutoEncoder), VAE(Variational AutoEncoder), VRNN(Variational Recurrent Neural Network), GNN(Graph Neural Network)를 모두 알아야한다. GVRNN은 VRNN과 GNN를 활용한 기법이므로 4가지 특징을 모두 안다면, GVRNN를 이해할 수 있을 것이다.
+- 4가지 개념을 하나의 blog에 담으려면 요약된 정보만을 설명할 수 밖에 없다. 나중에 조금 더 자세히 쓸 계획이다.
 
-![Data](../assets/img/SoccerDataSet.jpg)
-
-### Model
-- 본 연구에서 제안한 모델 아키텍처는 DCN(Deep Cross Network)를 활용하였다. 물론 DCN은 수치형 속성만 존재하므로 모델 구조의 변경은 필요하다. 축구 데이터는 범주형 속성(액션유형, 팀, 선수, 터치 부위, 행동 결과등)도 필요하기 때문에 두가지 속성을 조합하는 문제도 해결해야 한다.
-
-![Model](../assets/img/Model1.jpg)
-
-### Data Imbalance
-- 축구는 득점/실점이 매우 적은 스포츠이므로 VAEP의 라벨 특성상 데이터 불균형문제는 불가피한다. 기존 논문에서 사용한 Boosting기반의 알고리즘은 데이터 불균형을 자체적으로 해결하기 때문에 문제가 없었지만, 딥러닝은 이 문제를 해결해줘야한다. 그래서 본 연구에서는 데이터 불균형 문제를 해결하기 위해 오버샘플링을 활용한다. 실제로 불균형 문제를 해결했을 때, 딥러닝의 성능도 더 좋아지는 것을 확인할 수 있다.
+### AE(AutoEncoder)
+- 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
   
-![Count](../assets/img/DataCount.jpg)
+  ```markdown
+  1. Encoder : 입력 데이터를 내부 표현(잠재 공간)으로 변환 -> 추출된 특징을 Latent Vector라고 부름
   
-### Evaluation
+  2. Decoder : Encoder를 거친 Latent Space를 받아 원본 데이터과 같은 형태로 재구성
+  ```
+  
+- Model code github : [Model](https://github.com/dariocazzani/pytorch-AE/blob/master/models/AE.py)
+  
 
-##### 정량적 분석
-- 기존 VAEP에서 제안한 모델은 ROC AUC가 80.18/88.12%인 반면, DCN 알고리즘은 80.31/88.60% 성능을 보여준다. DCN 다중 분류를 오버샘플링 없이 시행했을 때는 이진 분류보다 더 복잡한 다중 분류의 결정 경계(decision boundary)를 명확하게 학습하지 못하지만, 오버샘플링 후에는 더 좋은 성능을 보여준다.
-- 성능표를 보면 기존 논문에서 제안한 Boosting기법과의 정량적인 차이가 없다는 것은 부인할 수가 없다. 실제로 여러 파인튜닝작업을 거쳤을 때는 Boosting을 뛰어넘지는 못했다. 본 연구에서 정량적 분석의 가치는 크게 없지만, 나는 정성적 분석의 차이를 강조하고 싶다.
-  
-![E1](../assets/img/정량사진.jpg)
+![Model](https://blog.kakaocdn.net/dn/8JonH/btqFBec9cAF/mhxdDF930R0CrHs9NdUKv1/img.png)
 
-##### 정성적 분석
-- 만약 여러분에게 각 이벤트의 가치를 평가하라고 하면, 어느 이벤트를 수행한 선수를 가장 높게 평가할 것인가요? VAEP를 보지않고 이벤트 장면만 보고 생각해보세요. 실제로, 여러분의 의견과 AI의 의견을 비교하는 것도 재밌을 것 같네요. 
-- Boosting기반의 알고리즘은 슛에만 유독 높은 VAEP값을 부여합니다. 그러나, DCN은 슛이 아닌 이전 액션에 더 높은 가치를 부여합니다. 정성적 평가는 사람마다 해석이 다를 수 있지만, 이벤트 데이터를 기준으로 볼 때 DCN이 플레이의 가치를 더 정확하게 분석하는 것 같지 않나요?
-- 조금 더 디테일한 분석은 [README.md](https://github.com/GunHeeJoe/VAEP/blob/main/README.md)에 남겨두겠습니다.
+### VAE(Variational AutoEncoder)
+- 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
+
+  ```markdown
+  1. Encoder : 입력 데이터를 내부 표현(잠재 공간)으로 변환 -> 확률 분포를 정의하는 평균과 표준편차 출력
   
-![E2](../assets/img/정성사진.jpg)
+  2. Latent Space : AE과 다르게 VAE에서는 Latent Space에서 noise를 추가함(동일한 데이터 생성 방지)
+  * 정규분포로 부터 하나의 noise를 샘플링한 후 이를 바탕으로 Latent vector z를 얻는데, 이를 reparameterize이라 한다.
+  
+  3. Decoder : Latend Space를 거친 z를 받아 원본 데이터과 같은 형태로 재구성
+  ```
+  
+- Model code github : [Model](https://github.com/dariocazzani/pytorch-AE/blob/master/models/VAE.py)
+  
+
+![Model](https://blog.kakaocdn.net/dn/b30Uzl/btrxY4wKngj/SucVwitDrRtQvi1xTHdrR0/img.png)
+
+### VRNN
+- RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
+  
+  ```markdown
+  1. Prior : 데이터를 접근하기 전 가지고 있는 사전 분포를 통해서 데이터를 추정함.
+      * Encoder가 입력데이터를 받아 Latent Space표현으로 변환하는 역할을 한다면, Prior은 Latent Space에 대한 전체적인 구조            와 분포를 정의함으로써 데이터를 생성할 때 일반화능력을 향상시킬 수 있다.
+      * 수식은 t시점 이전(과거)의 정보만을 활용한 분포를 추정하는 식임을 확인할 수 있다.
+  ```
+
+  $$\ \text{p}_{\theta}(z_t | x_{<t}, z_{<t}) = \ \phi_{\text{prior}}(h_{t-1})$$
+
+  ```markdown
+  2. Latent Space : VAE과 같은 역할이다. 학습할 때는 Encoder의 확률 분포를 받고, 데이터 생성할 때는 Prior의 확률분포를 받는다.
+  
+  3. Encoder(Inference) : 입력 데이터를 내부 표현(잠재 공간)으로 변환
+  * 학습할 때 사용
+  ```
+  
+  $$\ \text{q}_{\theta}(z_t | x_{\leq t}, z_{<t}) = \ \phi_{\text{enc}}(x_t,h_{t-1})$$
+
+  ```markdown
+  4. Decoder(Generation) : Latend Space를 거친 z를 받아 원본 데이터과 같은 형태로 재구성
+  ```
+  
+  $$\ \text{p}_{\theta}(z_t | z_{\leq t}, x_{<t}) = \ \phi_{\text{dec}}(z_t,h_{t-1})$$
+  
+  ```markdown
+  5. Recurrence : 이전 시점의 hidden state과 입력데이터, Latent Vecor를 활용하여 현재 시점의 hidden state를 업데이터하는 과정이다
+  ```
+  
+  $$\ \text{h}_t = f(x_t, z_t, h_{t-1})$$
+  
+- Loss : VAE의 손실 함수는 주로 두 부분으로 구성됩니다: 재구성 손실(reconstruction loss)과 정규화 손실(Kullback-Leibler divergence). 이 두 요소를 합쳐 Evidence Lower Bound (ELBO)라고 하며, VAE의 목표는 ELBO를 최대화하는 것입니다.
+  
+  ```markdown
+  1. Reconstruction Loss
+        - 입력 데이터와 출력 데이터 간의 차이를 줄입니다. 모델이 데이터를 얼마나 잘 재구성하는지 측정하는 지표
+  
+  2. Regularization Loss
+        - 모델이 단순히 데이터를 재생산하는 것을 넘어서, 일반적인 데이터 패턴을 이해하고 새로운 데이터를 생성할 수 있게 하는 정규화 역할(입력 데이터의 복사본 생성 방지)
+        - KL divergence는 Trajectory관점에서 다음 위치를 예측할 때, 이전 위치와 동일한 위치를 생성하지 않도록 하기 위한 것과 유사합니다. 즉, 모델이 데이터의 다양성을 유지하고 예측 가능한 패턴을 학습하도록 유도합니다.
+  ```
+  
+- Model code link : [Model](https://github.com/emited/VariationalRecurrentNeuralNetwork/blob/master/model.py)
+  
+
+![image](https://github.com/GunHeeJoe/GunHeeJoe.github.io/assets/112679136/19c89399-9ba1-463e-8867-ea61078dec90)
+
+
+
+
+### GVRNN
+- GVRNN은 VRNN에 GNN기법을 추가한 것이다. 축구의 경우 각 선수들의 Trajectory는 다른 선수들의 영향을 받기 때문에 GNN기법도 추가한 것이다.
+* 다중 에이전트의 상호작용을 학습
+- Prior, Encoder(Inference), Decoder(Generation)를 통해 나온 확률분포에 GNN를 추가하므로써 선수들의 상호작용도 학습하는 구조
+- Model code link : [Model](https://github.com/keisuke198619/C-OBSO/blob/main/vrnn/models/gvrnn.py)
+  
+
+![Model](https://github.com/GunHeeJoe/GunHeeJoe.github.io/assets/112679136/605202a0-3cf4-422e-87f5-fa1f8932cfcb)
+
