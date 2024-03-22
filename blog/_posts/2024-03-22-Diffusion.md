@@ -49,7 +49,7 @@ subtitle: Denoising Diffusion Probabilistic Models
     - $\beta_t$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $\beta$가 1이면 한번에 noise가 된다는 의미이다.
     - 기존 Diffusion Model은 Forward Process에서 $\beta$를 학습하는것이 목적이다.
       
-    *$\beta$를 $10^-4$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)*
+    ***$\beta$를 $10^-4$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)***
 
     ```python
     def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
