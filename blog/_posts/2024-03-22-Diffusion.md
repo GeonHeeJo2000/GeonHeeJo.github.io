@@ -5,7 +5,7 @@ title: Diffusion
 
 이것은 Diffusion Model에 대한 설명입니다. 
 
-### Generative Model 왜 안되는건데
+### Generative Model 
 - 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
@@ -115,7 +115,6 @@ title: Diffusion
     
 ### Loss
 - 원본 데이터($$x_0$$)의 분포를 찾아내는 것이 목적이므로 $$p(x_0)를 maximize해야한다.
-- ㅅㅂ좀 되라고
   
     <p align="center">
       <img src="../assets/img/%EA%B5%AC%EC%A1%B0%EB%B9%84%EA%B5%903.jpg">
@@ -123,6 +122,6 @@ title: Diffusion
       Loss
     </p>
 
-    - $$L_{T}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 분포과 q가 noise($$x_{t}$$)를 생성하는 분포간의 차이 최소화
+    - $$L_{T}(Regularization$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 분포과 q가 noise($$x_{t}$$)를 생성하는 분포간의 차이 최소화
     - $$L_{t-1}$$ : q와 p의 분포 차이를 최소화
     - $$L_{0}$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화 
