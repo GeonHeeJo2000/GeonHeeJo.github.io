@@ -45,10 +45,10 @@ subtitle: Denoising Diffusion Probabilistic Models
       Forward Porcess
     </p>
 
-        - Foward Process는 원본데이터($$x_{0}$$)으로부터 noise를 더해가면서 최종 noise($$x_t$$)로 가는 과정이다
-        - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $$\beta$$가 1이면 한번에 noise가 된다는 의미이다.
-        - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다.      
-        - $$\beta$$를 $$10^-4$$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)
+    - Foward Process는 원본데이터($$x_{0}$$)으로부터 noise를 더해가면서 최종 noise($$x_t$$)로 가는 과정이다
+    - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $$\beta$$가 1이면 한번에 noise가 된다는 의미이다.
+    - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다.      
+    - $$\beta$$를 $$10^-4$$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)
 
     ```python
     def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
@@ -81,7 +81,7 @@ subtitle: Denoising Diffusion Probabilistic Models
       Forward Porcess
     </p>
     
-    - Reverse Process는 noise($x_t$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
+    - Reverse Process는 noise($$x_{t}$$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
     - 기존 Diffusion Model은 가우시안분포를 학습하는 것이 목적이기 때문에 mean과 variance를 학습하는 것이 목적이다.   
     - variance대신에 beta를 활용하기도 한다.(mean만 학습에 사용)
     
@@ -105,6 +105,6 @@ subtitle: Denoising Diffusion Probabilistic Models
       Loss
     </p>
 
-    - $L_{T}$ : 원본데이터($x_0$)가 주어졌을 때 Forward Process에서 noise($x_t$)를 생성하는 분포과 Reverse Process에서 noise($x_t$)를 생성하는 분포간의 차이 -> 두 확률분포가 유사하도록 학습
-    - $L_{t-1}$ : Forward Process에서 구한 확률분포 q과 Reverse Process에서 구한 확률분포 p의 차이
-    - $L_{0}$ : 원본데이터($x_0$)가 주어졌을 때 Forward Process에서 noise($x_t$)를 생성하는 분포과 Reverse Process에서 noise($x_t$)를 생성하는 분포간의 차이
+    - $$L_{T}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 Forward Process에서 noise($$x_{t}$$)를 생성하는 분포과 Reverse Process에서 noise($$x_{t}$$)를 생성하는 분포간의 차이 -> 두 확률분포가 유사하도록 학습
+    - $$L_{t-1}$$ : Forward Process에서 구한 확률분포 q과 Reverse Process에서 구한 확률분포 p의 차이
+    - $$L_{0}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 Forward Process에서 noise($$x_{t}$$)를 생성하는 분포과 Reverse Process에서 noise($$x_{t}$$)를 생성하는 분포간의 차이
