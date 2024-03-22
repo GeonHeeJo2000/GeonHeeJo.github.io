@@ -96,14 +96,14 @@ title: Diffusion
     ```
     
 ### Loss
-- 원본 데이터($$x_0$$)를 찾아내는 것이 목적이므로 $$p(x_0)를 maximize해야한다.
+- 원본 데이터($$x_0$$)의 분포를 찾아내는 것이 목적이므로 $$p(x_0)를 maximize해야한다.
 
     <p align="center">
-      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHCh8p%2FbtrNv8RlXMI%2FgSKxU6CFtxUMQPhOtWNUV0%2Fimg.png">
+      <img src="../assets/img/구조비교3">
       <br>
       Loss
     </p>
 
-    - $$L_{T}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 Forward Process에서 noise($$x_{t}$$)를 생성하는 분포과 Reverse Process에서 noise($$x_{t}$$)를 생성하는 분포간의 차이 -> 두 확률분포가 유사하도록 학습
-    - $$L_{t-1}$$ : Forward Process에서 구한 확률분포 q과 Reverse Process에서 구한 확률분포 p의 차이
-    - $$L_{0}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 Forward Process에서 noise($$x_{t}$$)를 생성하는 분포과 Reverse Process에서 noise($$x_{t}$$)를 생성하는 분포간의 차이
+    - $$L_{T}$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 분포과 q가 noise($$x_{t}$$)를 생성하는 분포간의 차이 최소화
+    - $$L_{t-1}$$ : q와 p의 분포 차이를 최소화
+    - $$L_{0}$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화 
