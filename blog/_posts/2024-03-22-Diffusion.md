@@ -96,7 +96,7 @@ title: Diffusion
     ```
     
 ### Loss
-- Forward Process과 Reverse Process를 학습하기 최적화하기 위한 loss
+- 원본 데이터($$x_0$$)를 찾아내는 것이 목적이므로 $$p(x_0)를 maximize해야한다.
 
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHCh8p%2FbtrNv8RlXMI%2FgSKxU6CFtxUMQPhOtWNUV0%2Fimg.png">
