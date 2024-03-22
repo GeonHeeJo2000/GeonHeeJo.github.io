@@ -34,7 +34,7 @@ subtitle: Denoising Diffusion Probabilistic Models
     </p>
       
     - Diffusion Model사진은 Diffusion Model의 아키텍처이다.
-        - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
+    - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
 
 
     **Forward Process(diffusion process)**
