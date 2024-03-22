@@ -4,8 +4,7 @@ title: Diffusion
 subtitle: Denoising Diffusion Probabilistic Models
 ---
 
-이것은 Diffusion Model에 대한 설명입니다. Diffusion Model를 공부하기 위해서 위에 DDPM(Denoising Diffusion Probabilistic Models)을 참고했습니다.
-
+이것은 Diffusion Model에 대한 설명입니다. 
 
 
 ### Generative Model
@@ -47,8 +46,8 @@ subtitle: Denoising Diffusion Probabilistic Models
 
     - Foward Process는 원본데이터($x_0$)으로부터 noise를 더해가면서 최종 noise($x_t$)로 가는 과정이다
     - $\beta_t$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $\beta$가 1이면 한번에 noise가 된다는 의미이다.
-    - 기존 Diffusion Model은 Forward Process에서 $\beta$를 학습하는것이 목적이다. 그러나 본 논문에서는 $\beta$를 $10^-4$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로 사용한다. 즉, 학습을 하지 않고 고정된 상수값만 사용한다는 뜻이다.
-    - 계산의 복잡성도 줄일 수 있고, 실제로 학습하지 않아도 성능이 괜찮게 나와서 fixed constant를 사용함.
+    - 기존 Diffusion Model은 Forward Process에서 $\beta$를 학습하는것이 목적이다.
+    * $\beta$를 $10^-4$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)
 
     ```python
     def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
@@ -80,6 +79,20 @@ subtitle: Denoising Diffusion Probabilistic Models
       Forward Porcess
     </p>
 
+    - Reverse Process는 noise($x_t$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
+    - 기존 Diffusion Model은 가우시안분포를 학습하는 것이 목적이기 때문에 mean과 variance를 학습하는 것이 목적이다.
+    * variance대신에 beta를 활용하기도 한다.(mean만 학습에 사용)
+
+    ```python
+    def p_mean_variance(model, x, t):
+        # Make model prediction
+        out = model(x, t.to(device))
+    
+        # Extract the mean and variance
+        mean, log_var = torch.split(out, 2, dim=-1)
+        var = torch.exp(log_var)
+        return mean, log_var
+    ```
 ### VRNN
 - RNN의 시간적 동적 특성과 VAE의 확률적 생성 모델링를 결합했다. 시간에 따라 변화하는 Trajectory를 효과적으로 학습하기 위해서 RNN도입
   
