@@ -37,7 +37,7 @@ subtitle: Denoising Diffusion Probabilistic Models
         - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
 
 
-- Forward Process(diffusion process) : 
+### Forward Process(diffusion process) : 
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
@@ -72,7 +72,7 @@ subtitle: Denoising Diffusion Probabilistic Models
         return x_sequence
     ```
     
-- Reverse Process(diffusion process) : 
+### Reverse Process(diffusion process) : 
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
