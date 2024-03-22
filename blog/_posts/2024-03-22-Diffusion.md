@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Diffusion
-subtitle: Denoising Diffusion Probabilistic Models
 ---
 
 이것은 Diffusion Model에 대한 설명입니다. 
