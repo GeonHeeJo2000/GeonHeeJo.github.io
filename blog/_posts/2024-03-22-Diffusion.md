@@ -118,7 +118,7 @@ title: Diffusion
 - ㅅㅂ좀 되라고
   
     <p align="center">
-      <img src="../assets/img/구조비교3.jpg">
+      <img src="https://github.com/GunHeeJoe/GunHeeJoe.github.io/blob/master/assets/img/%EA%B5%AC%EC%A1%B0%EB%B9%84%EA%B5%903.jpg">
       <br>
       Loss
     </p>
