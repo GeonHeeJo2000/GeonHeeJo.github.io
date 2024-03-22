@@ -95,7 +95,7 @@ title: Diffusion
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOgUvv%2FbtrNxagxzDQ%2FUnouuwbgc6AgawplmKKSf1%2Fimg.png">
       <br>
-      Forward Porcess
+      Forward Process
     </p>
     
     - Reverse Process는 noise($$x_{t}$$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
