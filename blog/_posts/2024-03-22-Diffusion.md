@@ -1,28 +1,18 @@
 ---
 layout: post
-title: GVRNN
-subtitle: Graph Variational Recurrent Neural Networks
+title: Diffusion
+subtitle: Denoising Diffusion Probabilistic Models
 ---
 
-이것은 2022 MLSA Workshop에 제출한 "Evaluation of creating scoring opportunities for teammates in soccer via trajectory prediction"논문을 바탕으로 제가 공부한 GVRNN에 대한 설명입니다.
+이것은 Diffusion Model에 대한 설명입니다. Diffusion Model를 공부하기 위해서 위에 DDPM(Denoising Diffusion Probabilistic Models)을 참고했습니다.
 
-- 위 논문은 GVRNN을 활용하여 선수들의 trajectory를 예측하는 문제를 다루고 있습니다. 논문에 대해서는 본 blog에서 설명하지 않고 GVRNN에 대해서만 설명합니다. 
-- GVRNN을 설명하려면, 결국 AE(AutoEncoder), VAE(Variational AutoEncoder), VRNN(Variational Recurrent Neural Network), GNN(Graph Neural Network)를 모두 알아야한다. GVRNN은 VRNN과 GNN를 활용한 기법이므로 4가지 특징을 모두 안다면, GVRNN를 이해할 수 있을 것이다.
-- 4가지 개념을 하나의 blog에 담으려면 요약된 정보만을 설명할 수 밖에 없다. 나중에 조금 더 자세히 쓸 계획이다.
 
-### AE(AutoEncoder)
-- 오토인코더(AE)는 입력 데이터를 압축한 후 복원하여 representation learning(데이터의 표현을 학습)하는 비지도 학습 알고리즘이다.
-  
-  ```markdown
-  1. Encoder : 입력 데이터를 내부 표현(잠재 공간)으로 변환 -> 추출된 특징을 Latent Vector라고 부름
-  
-  2. Decoder : Encoder를 거친 Latent Space를 받아 원본 데이터과 같은 형태로 재구성
-  ```
-  
-- Model code github : [Model](https://github.com/dariocazzani/pytorch-AE/blob/master/models/AE.py)
-  
 
-![Model](https://blog.kakaocdn.net/dn/8JonH/btqFBec9cAF/mhxdDF930R0CrHs9NdUKv1/img.png)
+### Generative Model
+- 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
+- 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
+    
+![Generative Model](https://velog.velcdn.com/images/dablro12/post/e9bd9b84-5ae0-4740-a18b-f467fb14b36b/image.png)
 
 ### VAE(Variational AutoEncoder)
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
