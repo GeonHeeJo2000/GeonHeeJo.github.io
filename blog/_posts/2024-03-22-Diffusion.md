@@ -10,8 +10,13 @@ title: Diffusion
 - 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
-
-      
+     <p align="center">
+      <img src="https://d3i71xaburhd42.cloudfront.net/ba2f73db4e38324f751fbf30f7dde0bf4e7fa520/17-Figure10-1.png">
+      <img src="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/generative-overview.png">
+      <br>
+      Generative Model
+    </p>     
+    
     - Generative Model사진은 생성모델의 대표적인 4가지를 설명한 그림이다.
       
         - GAN(Generative Adversarial Networks) : 생성자(Generative Model)는 noise(z)로부터 가짜이미지를 생성하면, 판별자(Descriminator)가 진짜와 가짜를 판단한다. 이렇게 두 네트워크는 적대적인 방식으로 서로를 개선하면서 학습한다.
@@ -21,9 +26,10 @@ title: Diffusion
 
 ### Diffusion model
 - Data에 noise를 조금씩 더하거나 noise로부터 복원해가는 과정을 통해 데이터를 생성하는 모델
+  
      <p align="center">
       <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat.png">
-         <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat-2.png">
+      <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat-2.png">
       <br>
       Diffusion Model
     </p>
