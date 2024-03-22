@@ -76,7 +76,7 @@ subtitle: Denoising Diffusion Probabilistic Models
     **Reverse Process(diffusion process)**
     
     <p align="center">
-      <img src="https://img1.daumcdn.net/thumb/R1280x0/scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
+      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOgUvv%2FbtrNxagxzDQ%2FUnouuwbgc6AgawplmKKSf1%2Fimg.png">
       <br>
       Forward Porcess
     </p>
@@ -106,5 +106,5 @@ subtitle: Denoising Diffusion Probabilistic Models
     </p>
 
     - $L_T$ : 원본데이터($x_0$)가 주어졌을 때 Forward Process에서 noise($x_t$)를 생성하는 분포과 Reverse Process에서 noise($x_t$)를 생성하는 분포간의 차이 -> 두 확률분포가 유사하도록 학습
-    - $L_/(t-1)$ : Forward Process에서 구한 확률분포 q과 Reverse Process에서 구한 확률분포 p의 차이
+    - $L_(t-1)$ : Forward Process에서 구한 확률분포 q과 Reverse Process에서 구한 확률분포 p의 차이
     - $L_0$ : 원본데이터($x_0$)가 주어졌을 때 Forward Process에서 noise($x_t$)를 생성하는 분포과 Reverse Process에서 noise($x_t$)를 생성하는 분포간의 차이
