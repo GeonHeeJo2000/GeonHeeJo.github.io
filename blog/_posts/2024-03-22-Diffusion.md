@@ -10,11 +10,7 @@ title: Diffusion
 - 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
-    <p align="center">
-      <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-64-steps.gif">
-      <br>
-      Generative Model
-    </p>
+
       
     - Generative Model사진은 생성모델의 대표적인 4가지를 설명한 그림이다.
       
@@ -25,6 +21,12 @@ title: Diffusion
 
 ### Diffusion model
 - Data에 noise를 조금씩 더하거나 noise로부터 복원해가는 과정을 통해 데이터를 생성하는 모델
+     <p align="center">
+      <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat.png">
+         <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat-2.png">
+      <br>
+      Diffusion Model
+    </p>
 
     <p align="center">
       <img src="../assets/img/Diffusion image.JPG">
@@ -73,6 +75,12 @@ title: Diffusion
     ```
     
     **Reverse Process(diffusion process)**
+  
+    <p align="center">
+      <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-64-steps.gif">
+      <br>
+      Reverse Process
+    </p>
     
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOgUvv%2FbtrNxagxzDQ%2FUnouuwbgc6AgawplmKKSf1%2Fimg.png">
