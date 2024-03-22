@@ -13,19 +13,19 @@ subtitle: Denoising Diffusion Probabilistic Models
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
     <p align="center">
-      <img src="[../assets/img/figure1.jpg](https://velog.velcdn.com/images/dablro12/post/e9bd9b84-5ae0-4740-a18b-f467fb14b36b/image.pn)">
+      <img src="https://image.slidesharecdn.com/pr409-221030173906-b096ada2/75/pr409-denoising-diffusion-probabilistic-models-8-2048.jpg?cb=1684179188">
       <br>
-      Figure1
+      Generative Model
     </p>
       
-    - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
+    - Generative Model사진은 생성모델의 대표적인 4가지를 설명한 그림이다.
       
-        - 왼쪽 사진은 MATIC가 FABREGAS에게 패스하는 상황이고, 오른쪽 사진은 MATIC가 COSTA에게 패스하는 상황이다. 어느 패스가 더 가치있다고 생각하나요?
-        - 우리는 오른쪽 사진이 더 위험하지만, 성공을 한다면 더 높은 shooting chance를 만들 수 있는 패스이다. 그만큼 파브레가스한테 패스하는 오른쪽 상황보다 너 많은 스킬이 필요합니다. 그러나 현재 패스 지표(binary value)에서는 두 상황의 패스 모두 같은 가중치를 갖고 있습니다. 이는 게임 상황을 반영하지 않고 선수과 팀의 지표에 영향을 미칠 수도 있다.
-        - 본 연구에서는 더 나은 대안으로 Risk(패스 성공 확률)과 Reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
-        - 
+        - GAN(Generative Adversarial Networks) : 생성자(Generative Model)는 noise(z)로부터 가짜이미지를 생성하면, 판별자(Descriminator)가 진짜와 가짜를 판단한다. 이렇게 두 네트워크는 적대적인 방식으로 서로를 개선하면서 학습한다.
+        - VAE(Variational Auto-Encoder) : Encoder를 통해 입력데이터의 특성을 파악한 latent vector z를 만든 후에 z를 통해서 원본 데이터과 유사한 데이터를 샘플링한다. 
+        - Flow-based models : VAE과 유사하지만, Encoder가 역함수(inverse)가 존재하는 function의 합성함수로 Encoder로 정의하고, Decoder에서 함성함수의 역함수로 정의한 방식이다.
+        - Diffusion models : 데이터에 점진적으로 noise를 추가하고, noise만 남은 데이터를 바탕으로 다시 noise를 제거하면서 원본 데이터과 유사하게 생성하는 방식이다.
 
-### VAE(Variational AutoEncoder)
+### Diffusion model
 - 변이형 오토인코더(VAE)는 AE과 비슷한 구조를 가지지만, 확률 분포를 모델링한다는 점에서 차이가 있다
 
   ```markdown
