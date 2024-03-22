@@ -11,7 +11,7 @@ title: Diffusion
 - 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
 
     <p align="center">
-      <img src="https://image.slidesharecdn.com/pr409-221030173906-b096ada2/75/pr409-denoising-diffusion-probabilistic-models-8-2048.jpg?cb=1684179188">
+      <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-64-steps.gif">
       <br>
       Generative Model
     </p>
