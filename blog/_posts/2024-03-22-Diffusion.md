@@ -6,11 +6,10 @@ title: Diffusion
 이것은 Diffusion Model에 대한 설명입니다. 
 
 ### Generative Model 
-- 생성 모델(Generative Model)은 훈련 데이터의 분포를 따르는 유사한 데이터를 생성하는 모델이다.
-- 생성 모델은 훈련 데이터과 같은 확률분포를 학습하므로써 새로운 sample을 만들어내는 문제이므로 데이터의 분포를 학습하는게 목적이다.
+- 생성 모델(Generative Model)은 데이터의 분포를 학습하므로써 해당 분포과 유사한 데이터를 생성하는 모델이다.
 
     <p align="center">
-      <img src="../assets/img/%EC%83%9D%EC%84%B1%EB%AA%A8%EB%8D%B8%EC%82%AC%EC%A7%84.jpg">
+      <img src="../assets/img/생성모델구조.JPG">
       <br>
       Generative Example
     </p> 
@@ -21,7 +20,7 @@ title: Diffusion
       Generative Model
     </p>     
     
-    - Generative Model사진은 생성모델의 대표적인 4가지를 설명한 그림이다.
+    - 생성모델의 대표적인 4가지를 설명한 그림이다.
       
         - GAN(Generative Adversarial Networks) : 생성자(Generative Model)는 noise(z)로부터 가짜이미지를 생성하면, 판별자(Descriminator)가 진짜와 가짜를 판단한다. 이렇게 두 네트워크는 적대적인 방식으로 서로를 개선하면서 학습한다.
         - VAE(Variational Auto-Encoder) : Encoder를 통해 입력데이터의 특성을 파악한 latent vector z를 만든 후에 z를 통해서 원본 데이터과 유사한 데이터를 생성한다. 
@@ -35,18 +34,26 @@ title: Diffusion
       <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat.png">
       <img src="https://aurorasolar.com/wp-content/uploads/2022/07/Roof-Deepfakes-diffusion-cat-2.png">
       <br>
-      Diffusion Model
+      Diffusion
     </p>
-
+    
     <p align="center">
-      <img src="../assets/img/Diffusion image.JPG">
+      <img src="../assets/img/Diffusion model 종류.JPG">
       <br>
       Diffusion Model
     </p>
       
-    - Diffusion Model사진은 Diffusion Model의 아키텍처이다.
-    - Diffusion모델은 두가지 단계를 통해서 진행되는데, 데이터의 noise를 추가하는 Forward process(diffusion process)과 noise만 존재하는 데이터로부터 noise를 제거하므로써 원본 데이터로 복구하는 Reverse process가 있다.
+    - Diffusion Model은 DDPM, CFG, LDM로 나뉜다.
 
+    **DDPM**
+  
+    <p align="center">
+      <img src="../assets/img/Diffusion image.JPG">
+      <br>
+      DDPM
+    </p>
+      
+    - DDPM은 noise를 점점 추가해가는 forward prcess과 noise로부터 복원해나가는 reverse process가 있다
 
     **Forward Process(diffusion process)**
 
@@ -56,7 +63,7 @@ title: Diffusion
       Forward Porcess
     </p>
 
-    - Foward Process는 원본데이터($$x_{0}$$)으로부터 noise를 더해가면서 최종 noise($$x_t$$)로 가는 과정이다
+    - Foward Process는 원본데이터($$x_{0}$$)로부터 Gaussian Noise($$x_T$$)가 될때까지 Gaussian Noise를 추가하는 Markov Process를 의미한다.
     - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 더해가는지 결정한다. 즉, $$\beta$$가 1이면 오직 noise만 추가하므로써 한번에 noise($$x_t$$)가 된다는 의미이다.
     - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다.      
     - $$\beta$$를 $$10^-4$$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용되기도 한다.(학습을 하지 않고 고정된 상수값만 사용)
