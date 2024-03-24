@@ -66,7 +66,7 @@ title: Diffusion
     - 수식을 설명하면, 현재 시점의 이미지가 주어질 때 다음 시점의 이미지는 평균이 $$sqrt(1-\beta_{t}), 분산이 \beta_{t}I인 Gaussian의 분포를 따르도록한다.
     - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 추가할건지를 결정한다. 즉, $$\beta$$가 1이면 오직 noise만 추가하므로써 한번에 noise($$x_t$$)가 된다는 의미이다.
     - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다. -> U-net를 활용하여 noise를 예측하고, 실제 추가된 noise간의 차이를 바탕으로 학습된다.
-    - 그러나 DDPM에서는 $$\beta$$를 1e-4 ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로 사용한다. -> 학습을 하지 않고 고정된 상수값만 사용
+    - 그러나 DDPM에서는 $$\beta$$를 1e-4 ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로 사용한다. -> 학습을 하지 않고 고정된 상수값만 사용 : 고정해도 성능이 잘 나올 뿐 아니라 계산량을 줄일 수 있음.
     
     ```python
     def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
@@ -124,7 +124,7 @@ title: Diffusion
 - 원본 데이터($$x_0$$)의 분포를 찾아내는 것이 목적이므로 $$p(x_0)$$를 maximize해야한다.
 - 그러나, Diffusion model은 실제 데이터의 분포를 모르기 때문에 특정값으로 계산할 수가 없다. -> VLB를 사용
 - VLB(Variational Lower Bound) : 실제 데이터의 Log Likelihood를 근사하는 값의 lower bound이다.
-- DDPM에서는 VLB를 loss function으로 사용한다.
+- diffusion model에서는 VLB를 loss function으로 사용한다.
 
 <p align="center">
   <img src="../assets/img/diffusion_loss.jpg">
@@ -132,7 +132,7 @@ title: Diffusion
       Loss
     </p>
 
-- DDPM에서 VLB는 3가지 term으로 나눌 수 있다. 
+- diffusion model에서 VLB는 3가지 term으로 나눌 수 있다. 
     - $$L_{T}(Regularization)$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 가우시안확률분포과 q가 noise($$x_{t}$$)를 생성하는 가우시안확률분포간의 차이 최소화
         * Forward Process를 수행할 때, 사전에 정의한 Prior p과 유사하도록 q를 설정하므로써 과도한 noise를 추가하지않도록 정규화를 수행한다. -> DDPM에서는 forward process를 학습시키지 않기로 했기 때문에 상수취급
     - $$L_{0}(Reconstruction)$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화
@@ -142,6 +142,7 @@ title: Diffusion
 
 
     **$$L_{simple}(\theta)$$**
+    - diffusion model은 VLB를 사용하는 것은 이해했는데, 실제로 DDPM은 diffusion model를 간소화시키므로써 loss도 간소해진다.
   
       <p align="center">
       <img src="../assets/img/L_simple loss.JPG">
@@ -149,5 +150,9 @@ title: Diffusion
           Loss Simple
         </p>
 
-      1. 
+      1. $$\beta$$를 학습시키지 않으므로 Regularization term를 제외함
+      2. reverse process에서 variance를 $$\beta$$로 활용하므로써 denoising process를 재구성함.
+      * denoising process를 재구성하는 전개식은 생략함.
+        
+     **결론적으로 우리가 학습하고자하는 파라미터는 $$\epsilon$$이다. 즉 각 시점의 noise만 예측하면 된다.**
 
