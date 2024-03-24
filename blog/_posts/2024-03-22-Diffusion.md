@@ -189,7 +189,7 @@ title: Diffusion
     **Sampling**
       
     <p align="center">
-  <img src="../assets/img/DDPM training.JPG">
+  <img src="../assets/img/DDPM  sampling.JPG">
   <br>
       DDPM Sampling
     </p>
