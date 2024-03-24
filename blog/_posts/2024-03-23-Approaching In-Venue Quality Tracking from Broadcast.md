@@ -38,25 +38,26 @@ subtitle: 2024 MIT Sloan Sports Analytics Conference
 3. generatvie AI model
   
       **1. Encoding Broadcast Tracking Data**
-   
+
+      - tracking-data를 encoding하는 방법은 크게 temporal-attention과 spatial-attention를 활용한다.
       - broadcast tracking-data를 encode하는 것은 겹치는 agents의 위치를 추론하는데 강한 signals를 형성한다.
-      * temporal attention과 spatial attention를 활용하므로써 이전시점의 겹치는agent의 위치과 두 agent의 관계를 통해서 겹치는 agent를 해결할 수 있다는 의미이지 않을까 싶다.
-      - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
-      - Expected Receiver(Intented Recevier) : 패스의 의도된 receiver
+      - tracking-data를 encoding하는 주요 과제는 (1) modeling each agent's past behaviors과 (2) representing interagent spatial dynamics가 있다. 특히, agents가 오랫동안 겹치기 때문에 어렵다. 따라서 한번에 여러 시간동안의 tracking-data를 encoding해야한다. 
+  
+     <p align="center">
+        <img src="../assets/img/SAA attention.JPG">
+        <img src="../assets/img/SAA attention architecture.JPG">
+        <br>
+        SAA attention
+    </p>
 
-      <p align="center">
-        Expected Receiver = \(\frac{\text{Distance}}{\text{Min Distance}} \times \frac{\text{Angle}}{\text{Min Angle}}\)
-      </p>
-
-      - 패스의 성공 확률은 패스 수신자의 개인적인 기술에 영향을 미친다. 롱패스를 잘 받기로 유명한 Didier Drogba에게 패스를 한다면, 패스스킬이 좋지 않은 선수가 패스를 하거나 받기 어려운 패스도 패스 성공 확률이 높아질 수 있다.
-      - 그러나, 실패한 패스의 경우 실제로 수신자가 누구인지 알 수 없기 때문에, 패스 수신자의 개인적인 기술을 고려할 수 없다. 이 때, 고안해낸 것이 Expected Receiver(Intended Receiver)이다.
-      - 이전에 발표한 "Beyond Completion Rate: Evaluating the Passing Ability of Footballers"라는 논문은 실패한 패스 위치에서 가장 가까운 수신자를 Intended Receiver라고 정의했지만, 본 연구에서는 잠재적인 수신자들의 각도까지도 고려하여 Intended Receiver를 정의하고자 한다.
-      - 그러나, Intended Receiver에도 단점이 존재한다. 실패한 패스 위치 주위에 사람이 여러명 있거나 패스가 초기에 차단당했을 경우 Intended Receiver를 예측하기는 어렵다. 뿐만 아니라 패스가 실제로 달리는 선수 앞으로 떨어졌는지 뒤로 떨어졌는지 알 수 없기 때문에 패스의 절대적인 위치만을 활용하는 것이. Intended Receiver의 한계이다.
-      * 아직까지 Intended Receiver를 정확하게 분류하는 연구를 많이 보지는 못했다. 실제로도 제가 봤을 때는 거의 없었다. 그나마 가장 좋았던 것이 Expected pass라는 논문에서 Intended Receiver를 예측하는 연구를 했었는데, 성공한 패스는 93%, 실패한 패스는 72%로 나왔었다.
-
+    - Temporal Attention과 Spatioal Attention를 연속적으로 처리함 -> SAA(Spatiotemporal axial attention)
+    1. Temporal Attention : 각 agent의 과거 위치 간의 self-attention를 계산하여 temporal context를 추출한다. -> 겹치는 agent문제 해결
+    2. Spatial Attention : 특정 시점에 모든 agent의 위치 사이의 self-attention를 계산하여 spatial context를 추출한다. -> permutation문제 해결
+    
+       
     **2. Tactical Feature**
   
-      - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)ㅇ에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
+      - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
       - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 Risk과 Reward를 향상시킬 것으로 기대함
       * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
 
