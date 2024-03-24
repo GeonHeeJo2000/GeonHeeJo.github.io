@@ -51,8 +51,8 @@ subtitle: 2024 MIT Sloan Sports Analytics Conference
     </p>
 
     - Temporal Attention과 Spatioal Attention를 연속적으로 처리함 -> SAA(Spatiotemporal axial attention)
-    1. Temporal Attention : 각 agent의 과거 위치 간의 self-attention를 계산하여 temporal context를 추출한다. -> 겹치는 agent문제 해결
-    2. Spatial Attention : 특정 시점에 모든 agent의 위치 사이의 self-attention를 계산하여 spatial context를 추출한다. -> permutation문제 해결
+      1. Temporal Attention : 각 agent의 과거 위치 간의 self-attention를 계산하여 temporal context를 추출한다. -> 겹치는 agent문제 해결
+      2. Spatial Attention : 특정 시점에 모든 agent의 위치 사이의 self-attention를 계산하여 spatial context를 추출한다. -> permutation문제 해결
     
        
     **2. Tactical Feature**
