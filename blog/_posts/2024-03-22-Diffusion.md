@@ -107,7 +107,7 @@ title: Diffusion
     
     - Reverse Process는 noise($$x_{t}$$)만 있는 데이터에서 noise를 점점 제거하면서 원본 데이터로 복원하는 과정이다.
     - 기존 Diffusion Model은 가우시안분포를 학습하는 것이 목적이기 때문에 mean과 variance를 학습하는 것이 목적이다.   
-    - variance대신에 beta를 활용하기도 한다.(mean만 학습에 사용)
+    - 그러나 DDPM에서는 variance대신에 beta를 활용한다.(mean만 학습에 사용) -> $$p(x_{t-1} \lvert x_{t})의 variance가 \beta$$에 영향을 받기 때문에 학습시키지 않는다.
     
     ```python
     def p_mean_variance(model, x, t):
@@ -139,3 +139,15 @@ title: Diffusion
         * 전체 step중 한번만 계산되기 때문에 비중이 작음. -> DDPM에서는 상수취급
     - $$L_{t-1}(Denoising Process)$$ : p과 q의 가우시안확룰 분포를 최소화.
         * $$q(x_{t-1} \lvert x_{t})$$는 Bayes Rule로 계산가능(전개식은 생략)
+
+
+    **$$L_{simple}(\theta)$$**
+  
+      <p align="center">
+      <img src="../assets/img/L_simple loss.JPG">
+      <br>
+          Loss Simple
+        </p>
+
+      1. 
+
