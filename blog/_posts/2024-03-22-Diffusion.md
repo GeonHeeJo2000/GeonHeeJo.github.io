@@ -138,4 +138,4 @@ title: Diffusion
     - $$L_{0}(Reconstruction)$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화
         * 전체 step중 한번만 계산되기 때문에 비중이 작음. -> DDPM에서는 상수취급
     - $$L_{t-1}(Denoising Process)$$ : p과 q의 가우시안확룰 분포를 최소화.
-        * $$q(x_{t-1} /text{|} x_{t})$$는 Bayes Rule로 계산가능(전개식은 생략)
+        * $$q(x_{t-1} \lvert x_{t})$$는 Bayes Rule로 계산가능(전개식은 생략)
