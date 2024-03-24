@@ -59,7 +59,7 @@ title: Diffusion
     <p align="center">
       <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBxn8h%2FbtrNwGmvbn9%2F43ZTjDwWXkrda4cQlhmpEK%2Fimg.png">
       <br>
-      Forward Porcess
+      Forward Process
     </p>
     
     - Foward Process는 원본데이터($$x_{0}$$)로부터 Gaussian Noise($$x_T$$)가 될때까지 Gaussian Noise를 추가하는 Markov Process를 의미한다.
@@ -67,30 +67,29 @@ title: Diffusion
     - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 추가할건지를 결정한다. 즉, $$\beta$$가 1이면 오직 noise만 추가하므로써 한번에 noise($$x_t$$)가 된다는 의미이다.
     - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다.
     - 그러나 DDPM에서는 $$\beta$$를 1e-4 ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로 사용한다. -> 학습을 하지 않고 고정된 상수값만 사용(고정해도 성능이 잘 나올 뿐 아니라 계산량을 줄일 수 있음)
-    
+    * $$x_t$$를 구하기 위해서 원본데이터로부터 t시점까지 forward process를 t번 수행하는 것은 매우 비효율적 -> 수식을 정리하여 한번에 수행 가능
+
+     <p align="center">
+      <img src="../assets/img/forward process.JPG">
+      <br>
+      Forward Process
+    </p>
+
     ```python
-    def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
-        if schedule == 'linear':
-            betas = torch.linspace(start, end, n_timesteps)
-        elif schedule == "quad":
-            betas = torch.linspace(start ** 0.5, end ** 0.5, n_timesteps) ** 2
-        elif schedule == "sigmoid":
-            betas = torch.linspace(-6, 6, n_timesteps)
-            betas = torch.sigmoid(betas) * (end - start) + start
-        return betas
-    
-    def forward_process(x_start, n_steps, noise=None):
-        x_sequence = [x_start] # initial 'x_seq' which is filled with original data at first.
-        for n in range(n_steps):
-            beta_t = noise[n]
-            x_t_1 = x_sequence[-1]
-            epsilon_t_1 = torch.rand_like(x_t_1)
-    
-            x_t = (torch.sqrt(1-beta_t) * x_t_1) + (torch.sqrt(beta_t) * epsilon_t_1)
-            x_sequence.append(x_t)
-        return x_sequence
+    self.beta = self.prepare_noise_schedule().to(device)
+    self.alpha = 1. - self.beta
+    self.alpha_hat = torch.cumprod(self.alpha, dim=0)
+
+    def prepare_noise_schedule(self):
+        return torch.linspace(self.beta_start, self.beta_end, self.noise_steps)
+
+    def noise_images(self, x, t):
+        sqrt_alpha_hat = torch.sqrt(self.alpha_hat[t])[:, None, None, None]
+        sqrt_one_minus_alpha_hat = torch.sqrt(1 - self.alpha_hat[t])[:, None, None, None]
+        Ɛ = torch.randn_like(x)
+        return sqrt_alpha_hat * x + sqrt_one_minus_alpha_hat * Ɛ, Ɛ
     ```
-    
+
     **Reverse Process(diffusion process)**
     
     <p align="center">
@@ -109,17 +108,6 @@ title: Diffusion
     - 기존 Diffusion Model은 가우시안분포를 학습하는 것이 목적이기 때문에 mean과 variance를 학습하는 것이 목적이다.   
     - 그러나 DDPM에서는 variance대신에 beta를 활용한다.(mean만 학습에 사용) -> $$p(x_{t-1} \lvert x_{t})의 variance가 \beta$$에 영향을 받기 때문에 학습시키지 않는다.
     
-    ```python
-    def p_mean_variance(model, x, t):
-        # Make model prediction
-        out = model(x, t.to(device))
-    
-        # Extract the mean and variance
-        mean, log_var = torch.split(out, 2, dim=-1)
-        var = torch.exp(log_var)
-        return mean, log_var
-    ```
-
 ### Loss
 - 원본 데이터($$x_0$$)의 분포를 찾아내는 것이 목적이므로 $$p(x_0)$$를 maximize해야한다.
 - 그러나, Diffusion model은 실제 데이터의 분포를 모르기 때문에 특정값으로 계산할 수가 없다. -> VLB를 사용
@@ -154,5 +142,74 @@ title: Diffusion
   2. reverse process에서 variance를 $$\beta$$로 활용하므로써 denoising process를 재구성함.
   * denoising process를 재구성하는 전개식은 생략함.
     
- **결론적으로 우리가 학습하고자하는 파라미터는 $$\epsilon$$이다. 즉 각 시점의 noise만 예측하면 된다.**
+ **=> 결론적으로 우리가 학습하고자하는 파라미터는 $$\epsilon$$이다. 즉 각 시점의 noise만 예측하면 된다.**
 
+### DDPM Training
+- DDPM에서 모델은 U-net를 활용한다.
+- U-net은 image segementation에서 다루는 딥러닝 모델로 U자 형태의 구조를 가진다. 이는 encoding단계에서 채널의 수를 늘리면서 차원을 축소해 나가고, decoding단계에서 다시 채널의 수를 줄이고 차원을 늘려서 고차원의 이미지로 복원하는 구조를 갖는다.
+  
+  <p align="center">
+  <img src="../assets/img/training & sampling.JPG">
+  <br>
+      Training & Sampling
+    </p>
+
+  **Train**
+      
+    <p align="center">
+  <img src="../assets/img/DDPM training.JPG">
+  <br>
+      DDPM Training
+    </p>
+    
+      1. 원본데이터($$x_0$$)를 불러온다.
+      1. noise를 추가할 time step를 랜덤으로 추출함.
+      3. Gaussian를 따르는 랜덤한 $$\epsilon$$를 추출함 
+      4. 현재 시점의 latent vector $$x_t$$를 계산함.
+      5. latent vecotr $$x_t$$과 time step에 U-net를 거치므로써 noise를 예측함.
+      6. $$L_{simple}(\theta)$$를 통해 gradient descent수행
+
+  **=> 원본데이터를 $$x_t$$로 만드는데 noise를 예측하는 모델**
+  
+    ```python
+    for epoch in range(args.epochs):
+        for i, (images, _) in enumerate(dataloader):
+            images = images.to(device)
+            t = diffusion.sample_timesteps(images.shape[0]).to(device)
+            x_t, noise = diffusion.noise_images(images, t)
+            predicted_noise = model(x_t, t)
+            loss = mse(noise, predicted_noise)
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+    ```
+
+    **Sampling**
+      
+    <p align="center">
+  <img src="../assets/img/DDPM training.JPG">
+  <br>
+      DDPM Sampling
+    </p>
+    
+      1. $$x_T$$부터 시작함.
+      1. 각 시점별로 학습한 U-net를 통해 noise를 예측함.
+      3. 현재 시점의 $$x_t$$에서 noise만큼을 제거해서 $$x_{t-1}$$로 복원함
+      4. 마지막 step의 $$x_0$$가 우리가 생성한 데이터
+  
+  **=> 원본데이터를 $$x_t$$로 만드는데 noise를 예측하는 모델**
+  
+    ```python
+    for i in tqdm(reversed(range(1, self.noise_steps)), position=0):
+        t = (torch.ones(n) * i).long().to(self.device)
+        predicted_noise = model(x, t)
+        alpha = self.alpha[t][:, None, None, None]
+        alpha_hat = self.alpha_hat[t][:, None, None, None]
+        beta = self.beta[t][:, None, None, None]
+        if i > 1:
+            noise = torch.randn_like(x)
+        else:
+            noise = torch.zeros_like(x)
+        x = 1 / torch.sqrt(alpha) * (x - ((1 - alpha) / (torch.sqrt(1 - alpha_hat))) * predicted_noise) + torch.sqrt(beta) * noise
+    ```
