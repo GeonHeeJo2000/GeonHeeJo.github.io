@@ -141,18 +141,18 @@ title: Diffusion
         * $$q(x_{t-1} \lvert x_{t})$$는 Bayes Rule로 계산가능(전개식은 생략)
 
 
-    **$$L_{simple}(\theta)$$**
-    - diffusion model은 VLB를 사용하는 것은 이해했는데, 실제로 DDPM은 diffusion model를 간소화시키므로써 loss도 간소해진다.
-  
-      <p align="center">
-      <img src="../assets/img/L_simple loss.JPG">
-      <br>
-          Loss Simple
-        </p>
+## $$L_{simple}(\theta)$$
+- diffusion model은 VLB를 사용하는 것은 이해했는데, 실제로 DDPM은 diffusion model를 간소화시키므로써 loss도 간소해진다.
 
-      1. $$\beta$$를 학습시키지 않으므로 Regularization term를 제외함
-      2. reverse process에서 variance를 $$\beta$$로 활용하므로써 denoising process를 재구성함.
-      * denoising process를 재구성하는 전개식은 생략함.
-        
-     **결론적으로 우리가 학습하고자하는 파라미터는 $$\epsilon$$이다. 즉 각 시점의 noise만 예측하면 된다.**
+  <p align="center">
+  <img src="../assets/img/L_simple loss.JPG">
+  <br>
+      Loss Simple
+    </p>
+
+  1. $$\beta$$를 학습시키지 않으므로 Regularization term를 제외함
+  2. reverse process에서 variance를 $$\beta$$로 활용하므로써 denoising process를 재구성함.
+  * denoising process를 재구성하는 전개식은 생략함.
+    
+ **결론적으로 우리가 학습하고자하는 파라미터는 $$\epsilon$$이다. 즉 각 시점의 noise만 예측하면 된다.**
 
