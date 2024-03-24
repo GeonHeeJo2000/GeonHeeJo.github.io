@@ -1,29 +1,29 @@
 ---
 layout: post
-title: Not All Passes Are Created Equal
-subtitle:  “Not All Passes Are Created Equal:” Objectively Measuring the Risk and Reward of Passes in Soccer from Tracking Data
+title: Approaching In-Venue Quality Tracking from BroadcastVideo using Generative AI
+subtitle: 2024 MIT Sloan Sports Analytics Conference
 ---
 
-이것은 2017년 KDD Applied Data Science Paper로 제출한 논문으로 축구에서 패스의 가치를 평가하는 논문입니다. 이번 블로그에서는 위 논문에 대해서 자세히 설명하고자 합니다.
+이것은 2024년 MID SLONE에 제출한 논문으로 축구경기중 카메라에 포착되지 않은 선수들을 보간하는 논문입니다. 이번 블로그에서는 위 논문에 대해서 자세히 설명하고자 합니다. 
 
-- 이 논문은 2017년에 발표되었으며, 기술적으로 어려운 문제를 다루고 있지는 않습니다. 연구에서는 이진 분류 문제를 해결하기 위해 logistic regressor 모델을 사용하고 있습니다. 축구 데이터 분석이 초기 단계에 있었던 시점에 발표된 이 논문은, 기술적인 어려움보다는 축구 데이터 분석에 접근하는 방법을 다루기에 적합한 논문이라고 할 수 있습니다.
+- 이 논문은 2024년에 발표된 논문으로 다양한 기술들을 설명하고 있습니다. 그러나, 그 기술들에 대해서 자세히 설명하지 않으니 궁금한 것들에 대해서는 따로 공부하는 것을 추천한다.
+- AI : GNN(Graph Neural Networks), SAA(Spatiotemporal Axial Attention), Temporal Attention, Spatial Attention, Self-Attention, Diffuion
+[Diffuion](https://gunheejoe.github.io/2024-03-22-Diffusion/)
 
 ### Abstract
-- 본 논문은 패스의 가치를 평가하는 새로운 방식을 제안합니다.
-- 과거 : 패스를 평가할 때 사람이 직접 annotation를 달아야하기 때문에 단순한 방식으로 패스를 성공했는지 실패했는지로만 평가를 했습니다.
-- 논문 : 논문은 패스의 가치를 평가할 때, 단순한 binary value가 아닌 continuous specturum으로 측정해야 한다고 주장합니다. 뿐만 아니라 여러 관점에서 패스의 가치를 평가해야한다고 생각합니다. 그래서 본 논문은 패스 성공 확률과 패스가 chance를 만들 수 있는 확률관점에서 패스의 가치를 평가하고자 합니다.
+- 축구에서 tracking-data는 25년이 되었고, tracking-data를 활용하여 다양한 분석을 할 수 있었다. tracking-data는 초당 10개의 frame으로 선수의 위치를 추적하는데, 초창기에는 경기장에 설치된 카메라 or human에 의해서 수행되었다. 그리고 이를 활용하여 다양한 축구 데이터 분석을 수행할 수 있었다. 
+- 2008년 computer vision에 발전에 힘입어 자동으로 선수과 공의 위치를 추적할 수 있었고, 이에 실시간으로 데이터 분석도 가능해졌다. 그러나, 이러한 tracking-data를 제한된 가용성으로 인해 광범위한 활용에 제약이 있다. 자신의 팀만 사용할 수 있거나, 공유를 한다해도 리그 내에서의 분석만 가능하게 하여 국제적인 분석과 비교를 어렵게 만듭니다. 
+*(b)사진이 카메라를 통해 자동으로 선수과 공의 위치좌표를 추출한 후에 시각화한 그림이다.
+- broadcast tracking system의 발전으로 인해 이러한 제한을 극복할 수 있었다. 그러나, 방송에서 얻은 데이터는 주요 카메라에서 벗어난 선수, 근접 슛 촬영 , 화질, 선수가 선수를 가리는 장면등 여러 원인으로 인해 불완정합니다. 본 연구에서는 이러한 문제를 해결하기 위해 Diffusion Model를 활용해서 카메라에 포착되지 않는 선수들을 보간하고자합니다. 
+* (a)과 (d)가 방송을 통해 선수과 공의 좌표를 추출한 후에 시각화한 그림이다.
+- 
   
     <p align="center">
-      <img src="../assets/img/figure1.jpg">
+      <img src="../assets/img/inputation-all-data.JPG">
       <br>
       Figure1
     </p>
       
-    - Figure1은 축구 경기 상황에서 두 가지 다른 패스 선택의 예를 보여주고 있다.
-      
-        - 왼쪽 사진은 MATIC가 FABREGAS에게 패스하는 상황이고, 오른쪽 사진은 MATIC가 COSTA에게 패스하는 상황이다. 어느 패스가 더 가치있다고 생각하나요?
-        - 우리는 오른쪽 사진이 더 위험하지만, 성공을 한다면 더 높은 shooting chance를 만들 수 있는 패스이다. 그만큼 파브레가스한테 패스하는 오른쪽 상황보다 너 많은 스킬이 필요합니다. 그러나 현재 패스 지표(binary value)에서는 두 상황의 패스 모두 같은 가중치를 갖고 있습니다. 이는 게임 상황을 반영하지 않고 선수과 팀의 지표에 영향을 미칠 수도 있다.
-        - 본 연구에서는 더 나은 대안으로 Risk(패스 성공 확률)과 Reward(goal로 이어질 확률)을 고려해야한다고 주장합니다.
  
     <p align="center">
       <img src="../assets/img/figure2.jpg">
