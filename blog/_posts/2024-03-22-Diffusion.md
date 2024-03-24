@@ -134,7 +134,7 @@ title: Diffusion
 
 - DDPM에서 VLB는 3가지 term으로 나눌 수 있다. 
     - $$L_{T}(Regularization)$$ : 원본데이터($$x_{0}$$)가 주어졌을 때 p가 noise($$x_{t}$$)를 생성하는 가우시안확률분포과 q가 noise($$x_{t}$$)를 생성하는 가우시안확률분포간의 차이 최소화
-        * Forward Process를 수행할 때, 사전에 정의한 Prior p과 유사하도록 q를 설정함. -> DDPM에서는 forward process를 학습시키지 않기로 했기 때문에 상수취급
+        * Forward Process를 수행할 때, 사전에 정의한 Prior p과 유사하도록 q를 설정하므로써 과도한 noise를 추가하지않도록 정규화를 수행한다. -> DDPM에서는 forward process를 학습시키지 않기로 했기 때문에 상수취급
     - $$L_{0}(Reconstruction)$$ : latent vector x1으로부터 $$x_0$$를 추정하는 확률을 최대화
         * 전체 step중 한번만 계산되기 때문에 비중이 작음. -> DDPM에서는 상수취급
     - $$L_{t-1}(Denoising Process)$$ : p과 q의 가우시안확룰 분포를 최소화.
