@@ -161,16 +161,16 @@ title: Diffusion
   <br>
       DDPM Training
     </p>
-    
-      1. 원본데이터($$x_0$$)를 불러온다.
-      1. noise를 추가할 time step를 랜덤으로 추출함.
-      3. Gaussian를 따르는 랜덤한 $$\epsilon$$를 추출함 
-      4. 현재 시점의 latent vector $$x_t$$를 계산함.
-      5. latent vecotr $$x_t$$과 time step에 U-net를 거치므로써 noise를 예측함.
-      6. $$L_{simple}(\theta)$$를 통해 gradient descent수행
 
-  **=> 원본데이터를 $$x_t$$로 만드는데 noise를 예측하는 모델**
-  
+  - **원본데이터를 $$x_t$$로 만드는데 noise를 예측하는 모델**
+  1. 원본데이터($$x_0$$)를 불러온다.
+  1. noise를 추가할 time step를 랜덤으로 추출함.
+  3. Gaussian를 따르는 랜덤한 $$\epsilon$$를 추출함 
+  4. 현재 시점의 latent vector $$x_t$$를 계산함.
+  5. latent vecotr $$x_t$$과 time step에 U-net를 거치므로써 noise를 예측함.
+  6. $$L_{simple}(\theta)$$를 통해 gradient descent수행
+
+
     ```python
     for epoch in range(args.epochs):
         for i, (images, _) in enumerate(dataloader):
@@ -179,7 +179,7 @@ title: Diffusion
             x_t, noise = diffusion.noise_images(images, t)
             predicted_noise = model(x_t, t)
             loss = mse(noise, predicted_noise)
-
+    
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -193,12 +193,10 @@ title: Diffusion
       DDPM Sampling
     </p>
     
-      1. $$x_T$$부터 시작함.
-      1. 각 시점별로 학습한 U-net를 통해 noise를 예측함.
-      3. 현재 시점의 $$x_t$$에서 noise만큼을 제거해서 $$x_{t-1}$$로 복원함
-      4. 마지막 step의 $$x_0$$가 우리가 생성한 데이터
-  
-  **=> 원본데이터를 $$x_t$$로 만드는데 noise를 예측하는 모델**
+  1. $$x_T$$부터 시작함.
+  1. 각 시점별로 학습한 U-net를 통해 noise를 예측함.
+  3. 현재 시점의 $$x_t$$에서 noise만큼을 제거해서 $$x_{t-1}$$로 복원함
+  4. 마지막 step의 $$x_0$$가 우리가 생성한 데이터
   
     ```python
     for i in tqdm(reversed(range(1, self.noise_steps)), position=0):
