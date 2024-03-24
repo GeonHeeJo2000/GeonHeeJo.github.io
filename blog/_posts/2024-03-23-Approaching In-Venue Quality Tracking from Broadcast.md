@@ -13,136 +13,93 @@ subtitle: 2024 MIT Sloan Sports Analytics Conference
 ### Abstract
 - 축구에서 tracking-data는 25년이 되었고, tracking-data를 활용하여 다양한 분석을 할 수 있었다. tracking-data는 초당 10개의 frame으로 선수의 위치를 추적하는데, 초창기에는 경기장에 설치된 카메라 or human에 의해서 수행되었다. 그리고 이를 활용하여 다양한 축구 데이터 분석을 수행할 수 있었다. 
 - 2008년 computer vision에 발전에 힘입어 자동으로 선수과 공의 위치를 추적할 수 있었고, 이에 실시간으로 데이터 분석도 가능해졌다. 그러나, 이러한 tracking-data를 제한된 가용성으로 인해 광범위한 활용에 제약이 있다. 자신의 팀만 사용할 수 있거나, 공유를 한다해도 리그 내에서의 분석만 가능하게 하여 국제적인 분석과 비교를 어렵게 만듭니다. 
-<br/>*(b)사진이 카메라를 통해 자동으로 선수과 공의 위치좌표를 추출한 후에 시각화한 그림이다.
+<br/> * (b)가 카메라를 통해 자동으로 선수과 공의 위치좌표를 추출한 후에 시각화한 그림이다.
 - broadcast tracking system의 발전으로 인해 이러한 제한을 극복할 수 있었다. 그러나, 방송에서 얻은 데이터는 주요 카메라에서 벗어난 선수, 근접 슛 촬영 , 화질, 선수가 선수를 가리는 장면등 여러 원인으로 인해 불완정합니다. 본 연구에서는 이러한 문제를 해결하기 위해 Diffusion Model를 활용해서 카메라에 포착되지 않는 선수들을 보간하고자합니다. 
-<br/>* (a)과 (d)가 방송을 통해 선수과 공의 좌표를 추출한 후에 시각화한 그림이다.
-- 
+<br/> * (a)과 (d)가 방송을 통해 선수과 공의 좌표를 추출한 후에 시각화한 그림이다.
   
     <p align="center">
       <img src="../assets/img/inputation-all-data.JPG">
       <br>
       Figure1
     </p>
-      
+    
+    - (a) : 방송에서 포착된 장면
+    - (b) : 실제 경기장의 카메라를 통해 자동으로 위치를 추적한 In-Venue tracking-data
+    - (c) : on-the-ball 이벤트만 기록한 event-data
+      * event-data로 분석은 가능하지만, off-the-ball은 놓치므로 정확한 분석이 불가능함.
+    - (d) : 방송에서 포착된 장면을 통해 선수들의 위치좌표를 추적한 Broadcast tracking-data
+    - (e) : 방송 주요 카메라에 포착되지 않은 다른 선수들을 보간한 Imputed tracking-data
+      * 본 연구에서는 diffusion를 통해서 보간하고자 한다.  
  
-    <p align="center">
-      <img src="../assets/img/figure2.jpg">
-      <br>
-      Figure2
-    </p>
-    
-    - Figure2은 Risk과 Reward를 고려한 두 가지 다른 패스 선택의 예를 보여주고 있다.
-      
-        - COSTA에게 패스는 성공확률이 40%로 낮지만, 슛으로 이어질 확률은 31%가 증가한다.
-        - 여기서 왜 31%인지는 필자도 모르겠다. 이전 shot danger이 4%이고, COSTA에게 패스할 때 shot danger이 33%이면 29%가 증가한거 아닌가?
-        - 이러한 Risk과 Reward를 객관적으로 추정하는 것을 보여줄 예정이다.
-
-## DataSet
-- 본 논문에서는 0.1초마다 수집되는 위치정보가 포함된 trackingd-data과 event-name, the ball location, possession등의 이벤트 관련 정보가 들어있는 event-data를 활용했다. 수집한 데이터는 2014/2015~2015/2016 season EPL(English Premier League)의 726경기를 가져왔다.
-- 726경기에서 발생한 총 패스는 571,287개이고, 이 중 패스가 성공한 횟수는 468,265개이다. 경기 당 패스의 수로 비교했을 때는, 평균적으로 380.46개가 발생하고 그 중 320.91개 성공했다. 저희의 baseline으로 사용한 패스성공확률은 84.35%이다.
-
-    <p align="center">
-      <img src="../assets/img/table1.jpg">
-      <br>
-      Table1
-    </p>
+## Model Architecture
+- 본 논문에서는 tracking-data를 보간하는 방식은 크게 3가지로 나눈다. 우리는 3가지 방식이 실제로 어떻게 구현되는지 알아볼 예정이다.
+1. Encoding Broadcast Tracking Data
+2. Encoding Broadcast Event Data
+3. generatvie AI model
+  
+      **1. Encoding Broadcast Tracking Data**
    
-    - Table1은 패스 이벤트의 summary이다.
-      
-        - 백패스 or 사이드패스에 비해 전방패스의 성공확률이 훨씬 낮다.
-        - 경기장을 3등분 했을 때, 우리팀 진영이 first third이고 상대팀 진영이 final third이다. 상대팀 진영과 가까운 공간에서 패스할 수록 패스 성공확률이 더 낮은 것을 볼 수 있다.
-        - 패스하는 위치 or 패스의 종류에 따라서 성공확률이 달라지는 것을 확인할 수 있음 -> 패스의 context정보도 Risk를 측정하는데 활용
-          
-## Risk and Reward
+      - broadcast tracking-data를 encode하는 것은 겹치는 agents의 위치를 추론하는데 강한 signals를 형성한다.
+      * temporal attention과 spatial attention를 활용하므로써 이전시점의 겹치는agent의 위치과 두 agent의 관계를 통해서 겹치는 agent를 해결할 수 있다는 의미이지 않을까 싶다.
+      - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
+      - Expected Receiver(Intented Recevier) : 패스의 의도된 receiver
 
-|   |Risk|Reward|
-|:---:|:---:|:---:|
-|설명|The likelihood of successfully executing a pass|The likelihood of a pass creating a shot chance|
-|Label|The outcome of pass event|1 if a shot is taken within 10 seconds after a pass, otherwise 0|
+      <p align="center">
+        Expected Receiver = \(\frac{\text{Distance}}{\text{Min Distance}} \times \frac{\text{Angle}}{\text{Min Angle}}\)
+      </p>
 
+      - 패스의 성공 확률은 패스 수신자의 개인적인 기술에 영향을 미친다. 롱패스를 잘 받기로 유명한 Didier Drogba에게 패스를 한다면, 패스스킬이 좋지 않은 선수가 패스를 하거나 받기 어려운 패스도 패스 성공 확률이 높아질 수 있다.
+      - 그러나, 실패한 패스의 경우 실제로 수신자가 누구인지 알 수 없기 때문에, 패스 수신자의 개인적인 기술을 고려할 수 없다. 이 때, 고안해낸 것이 Expected Receiver(Intended Receiver)이다.
+      - 이전에 발표한 "Beyond Completion Rate: Evaluating the Passing Ability of Footballers"라는 논문은 실패한 패스 위치에서 가장 가까운 수신자를 Intended Receiver라고 정의했지만, 본 연구에서는 잠재적인 수신자들의 각도까지도 고려하여 Intended Receiver를 정의하고자 한다.
+      - 그러나, Intended Receiver에도 단점이 존재한다. 실패한 패스 위치 주위에 사람이 여러명 있거나 패스가 초기에 차단당했을 경우 Intended Receiver를 예측하기는 어렵다. 뿐만 아니라 패스가 실제로 달리는 선수 앞으로 떨어졌는지 뒤로 떨어졌는지 알 수 없기 때문에 패스의 절대적인 위치만을 활용하는 것이. Intended Receiver의 한계이다.
+      * 아직까지 Intended Receiver를 정확하게 분류하는 연구를 많이 보지는 못했다. 실제로도 제가 봤을 때는 거의 없었다. 그나마 가장 좋았던 것이 Expected pass라는 논문에서 Intended Receiver를 예측하는 연구를 했었는데, 성공한 패스는 93%, 실패한 패스는 72%로 나왔었다.
 
-## Model
-- Random Forest : 비선형 블랙박스 모델로 예측 과정을 해석하기 어려움. -> coaching point(coefficient)가 필요함.
-- Logistic Regressor : 패스의 성능에 영향을 주는 요인을 코치들도 분석하는 것이 중요하므로 본 연구에서는 선형 모델인 Logistic Regerssor를 활용한다.
-- Data : Train(352,466) & Valid(114,257) & Test(114,257)
-
-
-## Context Features
-- 패스 성공률이 context과 관계가 있다는 것은 table1에서 확인할 수 있었다. 앞서봤던 micro-level뿐 아니라 더 높은 수준의 contextual infromation이 예측을 향상시키고 코치들에게 유용한 정보를 제공할지도 모른다.
-
-    <p align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/5-Figure5-1.png">
-      <br>
-      Figure5
-    </p>
-
-    - Figure5은 패스의 contextual feature를 담은 passing dictionary이다.
-        - 우리는 3가지 구조의 contextual feature를 만들어서 예측 성능을 향상시키고자한다.
-
-      <br>
-      
-        **1. Micro Feature**
-    
-        - 대표적인 패스의 context정보 : 속도, 거리, 패스각도, 첫터치 시간등을 사용한다.
-        - 소유권을 되찾은 후 시간 : 상대팀이 조직을 갖춘 상황인지 이미 조직을 갖춘 상황인지에 따라 패스성공확률은 달라진다.
-        - Expected Receiver(Intented Recevier) : 패스의 의도된 receiver
+    **2. Tactical Feature**
   
-        <p align="center">
-          Expected Receiver = \(\frac{\text{Distance}}{\text{Min Distance}} \times \frac{\text{Angle}}{\text{Min Angle}}\)
-        </p>
-  
-        - 패스의 성공 확률은 패스 수신자의 개인적인 기술에 영향을 미친다. 롱패스를 잘 받기로 유명한 Didier Drogba에게 패스를 한다면, 패스스킬이 좋지 않은 선수가 패스를 하거나 받기 어려운 패스도 패스 성공 확률이 높아질 수 있다.
-        - 그러나, 실패한 패스의 경우 실제로 수신자가 누구인지 알 수 없기 때문에, 패스 수신자의 개인적인 기술을 고려할 수 없다. 이 때, 고안해낸 것이 Expected Receiver(Intended Receiver)이다.
-        - 이전에 발표한 "Beyond Completion Rate: Evaluating the Passing Ability of Footballers"라는 논문은 실패한 패스 위치에서 가장 가까운 수신자를 Intended Receiver라고 정의했지만, 본 연구에서는 잠재적인 수신자들의 각도까지도 고려하여 Intended Receiver를 정의하고자 한다.
-        - 그러나, Intended Receiver에도 단점이 존재한다. 실패한 패스 위치 주위에 사람이 여러명 있거나 패스가 초기에 차단당했을 경우 Intended Receiver를 예측하기는 어렵다. 뿐만 아니라 패스가 실제로 달리는 선수 앞으로 떨어졌는지 뒤로 떨어졌는지 알 수 없기 때문에 패스의 절대적인 위치만을 활용하는 것이. Intended Receiver의 한계이다.
-        * 아직까지 Intended Receiver를 정확하게 분류하는 연구를 많이 보지는 못했다. 실제로도 제가 봤을 때는 거의 없었다. 그나마 가장 좋았던 것이 Expected pass라는 논문에서 Intended Receiver를 예측하는 연구를 했었는데, 성공한 패스는 93%, 실패한 패스는 72%로 나왔었다.
-  
-      **2. Tactical Feature**
-    
-        - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)ㅇ에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
-        - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 Risk과 Reward를 향상시킬 것으로 기대함
-        * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
+      - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)ㅇ에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
+      - Tactical Feature는 context를 더 용이하게 분석할 뿐 아니라 Risk과 Reward를 향상시킬 것으로 기대함
+      * 2024-02-07에 한국 vs 요르단경기도 이것을 활용하면 counter-attack상황에서 한국의 패스 성공률이 어떻게 측정될지도 궁금하네요.
 
-      **3. Formation Feature**
+    **3. Formation Feature**
 
-        - 패스의 Risk는 defensive-block에도 영향을 미친다. 따라서 우리는 high-block, medium-block, low-block으로 분류한다
-        - defensive-block를 사용하기 위해서 선수과 공의 위치좌표를 클러스터링을 사용했다.
-     
-        - contextual information를 추가적으로 사용하기 위해 formation clustering도 활용한다.
-        - formation clustering은 모든 선수들의 위치 정보를 활용하여 비슷한 formation정보를 찾아주는 논문입니다.
-        - 이를 활용하면 패스가 수비수과 미드필더 사이에서 패스를 했는지, 미드필더과 공격수 사이에서 패스를 했는지를 파악할 수 있다.
-      
-        <p align="center">
-              <img src="https://d3i71xaburhd42.cloudfront.net/34b4f2ae4d541be465ee34a6d168d80edd18123e/4-Figure5-1.png">
-              <br>
-              Formation Clustering
-            </p>
-
-        - 위 그림은 "Large-scale analysis of soccer matches using spatiotemporal tracking data"에서 제안한 Formation clstering했을 때 나온 유사한 formation그림이다.
-
-    <p align="center">
-      <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/5-Figure4-1.png">
-      <br>
-      Figure4
-    </p>
+      - 패스의 Risk는 defensive-block에도 영향을 미친다. 따라서 우리는 high-block, medium-block, low-block으로 분류한다
+      - defensive-block를 사용하기 위해서 선수과 공의 위치좌표를 클러스터링을 사용했다.
    
-    - Figure4은 tactical and formation features을 보여준다. 노란색 선은 오른쪽 상단에 Pass Risk(패스 성공 확률)과 Pass Reward를 표현한 패스이다.
-    <br>
+      - contextual information를 추가적으로 사용하기 위해 formation clustering도 활용한다.
+      - formation clustering은 모든 선수들의 위치 정보를 활용하여 비슷한 formation정보를 찾아주는 논문입니다.
+      - 이를 활용하면 패스가 수비수과 미드필더 사이에서 패스를 했는지, 미드필더과 공격수 사이에서 패스를 했는지를 파악할 수 있다.
     
-    |   |Left|Right|
-    |:---:|:---:|:---:|
-    |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 역습 상황|상대 수비 조직을 무너트리기 위한 빌드업 단계|
-    |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|Build-up모습과 defensive-block를 갖춘 low-block상황을 보여줌|
-    |**risk**|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 평균적으로 risk가 낮음|빌드업단계에서 패스는 risk가 낮고, 침투패스는 risk가 높음|
-    |Reward(danger)|진취적인 성격을 띄는 패스가 많으므로 평균적으로 reward(danger)가 높은 것을 확인함|측면패스가 많으므로 평균적으로 reward(danger)이 낮음| 
+      <p align="center">
+            <img src="https://d3i71xaburhd42.cloudfront.net/34b4f2ae4d541be465ee34a6d168d80edd18123e/4-Figure5-1.png">
+            <br>
+            Formation Clustering
+          </p>
 
-    * Risk : 패스 성공 확률 -> Risk가 높으면 패스 성공 확률이 높다
-    * **risk(위험도)** : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
-    * danger(위험성) : Reward과 같은 의미 -> Danger가 높으면, 슛팅할 확률이 높다.
+      - 위 그림은 "Large-scale analysis of soccer matches using spatiotemporal tracking data"에서 제안한 Formation clstering했을 때 나온 유사한 formation그림이다.
+
+  <p align="center">
+    <img src="https://d3i71xaburhd42.cloudfront.net/3bc06b64581287361771ca4bb95f74991abb805d/5-Figure4-1.png">
     <br>
-    
-    * 진취적인 패스(Progressive Pass) : 하프라인을 기준으로 우리팀 진영에서 30m이상의 패스 or 상대팀 진영에서 10m이상의 패스
-    * 진취적인 패스 관련 기사 : [Progressive Pass](https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
+    Figure4
+  </p>
+ 
+  - Figure4은 tactical and formation features을 보여준다. 노란색 선은 오른쪽 상단에 Pass Risk(패스 성공 확률)과 Pass Reward를 표현한 패스이다.
+  <br>
+  
+  |   |Left|Right|
+  |:---:|:---:|:---:|
+  |상황|골키퍼가 공을 잡자마자 빠르게 진행하는 역습 상황|상대 수비 조직을 무너트리기 위한 빌드업 단계|
+  |Feature|역습 상황인 counter-attack모습과 defensive-block를 갖추지 못한 high-block상황을 보여줌|Build-up모습과 defensive-block를 갖춘 low-block상황을 보여줌|
+  |**risk**|수비수들이 조직을 갖추지 않은 상태에서 패스가 대부분이므로 평균적으로 risk가 낮음|빌드업단계에서 패스는 risk가 낮고, 침투패스는 risk가 높음|
+  |Reward(danger)|진취적인 성격을 띄는 패스가 많으므로 평균적으로 reward(danger)가 높은 것을 확인함|측면패스가 많으므로 평균적으로 reward(danger)이 낮음| 
+
+  * Risk : 패스 성공 확률 -> Risk가 높으면 패스 성공 확률이 높다
+  * **risk(위험도)** : 패스를 성공적으로 완료하는데 있어서 위험성 -> risk가 낮으면, 안전한 패스이다.
+  * danger(위험성) : Reward과 같은 의미 -> Danger가 높으면, 슛팅할 확률이 높다.
+  <br>
+  
+  * 진취적인 패스(Progressive Pass) : 하프라인을 기준으로 우리팀 진영에서 30m이상의 패스 or 상대팀 진영에서 10m이상의 패스
+  * 진취적인 패스 관련 기사 : [Progressive Pass](https://www.interfootball.co.kr/news/articleView.html?idxno=381033)
 
         
 ## Match Analysis
