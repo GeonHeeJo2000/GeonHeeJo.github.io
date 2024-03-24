@@ -45,7 +45,7 @@ title: Diffusion
       
     - Diffusion Model은 DDPM, CFG, LDM로 나뉜다.
 
-## DDPM
+### DDPM
 - DDPM은 noise를 점점 추가해가는 forward prcess과 noise로부터 복원해나가는 reverse process로 나눈다.
 
     <p align="center">
@@ -141,7 +141,7 @@ title: Diffusion
         * $$q(x_{t-1} \lvert x_{t})$$는 Bayes Rule로 계산가능(전개식은 생략)
 
 
-## $$L_{simple}(\theta)$$
+### $$L_{simple}(\theta)$$
 - diffusion model은 VLB를 사용하는 것은 이해했는데, 실제로 DDPM은 diffusion model를 간소화시키므로써 loss도 간소해진다.
 
   <p align="center">
