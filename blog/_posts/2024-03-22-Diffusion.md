@@ -46,7 +46,7 @@ title: Diffusion
     - Diffusion Model은 DDPM, CFG, LDM로 나뉜다.
 
 ## DDPM
-- DDPM은 noise를 점점 추가해가는 forward prcess과 noise로부터 복원해나가는 reverse process가 있다.
+- DDPM은 noise를 점점 추가해가는 forward prcess과 noise로부터 복원해나가는 reverse process로 나눈다.
 
     <p align="center">
       <img src="../assets/img/Diffusion image.JPG">
@@ -65,7 +65,8 @@ title: Diffusion
     - Foward Process는 원본데이터($$x_{0}$$)로부터 Gaussian Noise($$x_T$$)가 될때까지 Gaussian Noise를 추가하는 Markov Process를 의미한다.
     - 수식을 설명하면, 현재 시점의 이미지가 주어질 때 다음 시점의 이미지는 평균이 $$sqrt(1-\beta_{t}), 분산이 \beta_{t}I인 Gaussian의 분포를 따르도록한다.
     - $$\beta_{t}$$는 noise의 variance를 결정하는 파라미터로 얼만큼 noise를 추가할건지를 결정한다. 즉, $$\beta$$가 1이면 오직 noise만 추가하므로써 한번에 noise($$x_t$$)가 된다는 의미이다.
-    - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다. 그러나 DDPM에서는 $$\beta$$를 $$10^-4$$ ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용한다.(학습을 하지 않고 고정된 상수값만 사용)
+    - 기존 Diffusion Model은 Forward Process에서 $$\beta$$를 학습하는것이 목적이다. -> U-net를 활용하여 noise를 예측한다. 실제 추가된 noise간의 차이를 바탕으로 학습된다.
+    - 그러나 DDPM에서는 $$\beta$$를 1e-4 ~ 0.02로 linear하게 증가시켜서 부여하는 방식으로도 사용한다.(학습을 하지 않고 고정된 상수값만 사용)
     
     ```python
     def make_beta_schedule(schedule='linear', n_timesteps=1000, start=1e-4, end=0.02):
