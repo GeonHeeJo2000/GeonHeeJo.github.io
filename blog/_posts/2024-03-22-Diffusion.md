@@ -7,7 +7,8 @@ title: Diffusion
 
 ### Generative Model 
 - 생성 모델(Generative Model)은 데이터의 분포를 학습하므로써 해당 분포과 유사한 데이터를 생성하는 모델이다.
-
+- 데이터 분포에서 log likelihood가 최대화되는 부분에서 sample를 추출하므로써 유사한 데이터를 생성하는 구조이다.
+  
     <p align="center">
       <img src="../assets/img/생성모델구조.JPG">
       <br>
