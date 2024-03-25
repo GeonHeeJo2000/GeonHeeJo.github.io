@@ -54,7 +54,43 @@ subtitle: 2024 MIT Sloan Sports Analytics Conference
       1. Temporal Attention : 각 agent의 과거 위치 간의 self-attention를 계산하여 temporal context를 추출한다. -> 겹치는 agent문제 해결
       2. Spatial Attention : 특정 시점에 모든 agent의 위치 사이의 self-attention를 계산하여 spatial context를 추출한다. -> permutation문제 해결
     
-       
+  
+      **2. Enhancing Broadcast Tracking with Event Data**
+
+      - tracking-data의 한계 : 공을 지속적으로 추적하는데 어려움 & 짧은 시간동안 방송 추적 제공하지 않음
+      - 이러한 기간은 상대적으로 짧지만(<10초) 추가적인 context없이 agent를 합성하는 것은 매우 어렵다.
+      - tracking-data과 event-data를 통합하여 이러한 문제를 해결하고자 한다. -> multi-modal, consisting of multiple spatiotemporal input modes 
+  
+     <p align="center">
+        <img src="../assets/img/SAA attention.JPG">\
+        <br>
+        how we fuse where event data and broadcast tracking-data
+    </p>
+
+    - event-data도 spatiotemporal modality로 활용할 수 있음.
+      1. Temporal Attention : the chronological ordering of each player’s
+events
+      2. Spatial Attention :  representing each specific player
+
+
+      **3. Generating Photorealistic Tracking Data via Diffusion**
+
+      - broadcast tracking-data과 event-data를 결합하면, agent의 위치를 보다 정확하게 예측할 수 있지만 반드시 realistic human motion를 예측하지는 못한다.
+      - noise과 heavy occlusions문제로 인해 여전히 위치 정보가 불확실하다. 이는 종종 trajectory가 부드럽지 않고 순간이동하는 것처럼 보인다.
+      - 이러한 비현실적인 motion를 해결하기 위해 diffusion을 활용한다.
+      
+     <p align="center">
+        <img src="../assets/img/SAA attention.JPG">\
+        <br>
+        how we fuse where event data and broadcast tracking-data
+    </p>
+
+    - Diffusion과정에 대해서 수식이 존재하지 않아서 정확한 알고리즘은 알 수가 없고, 영상과 논문을 통해 추측해봤다.
+       1. human motion이 남을 때까지 noise를 계속 추가한다.
+       2. noise sample에서 denoise를 통해 realistic tracking-data를 추출한다.
+       3. denoise단계에서 play encoding정보를 전달한다.
+       * Diffusion? SoccerDiffusion? LatentDiffusion? 정확한 구조를 알 수 없다. 
+   
     **2. Tactical Feature**
   
       - open-play(세트피스 상황과 같이 멈춰있는 상황이 아닌 경기가 진행되고 있는 상황을 의미)에 집중하여 3가지 game-state로 분류한다 : build-up, counter-attack, unstructed-play
