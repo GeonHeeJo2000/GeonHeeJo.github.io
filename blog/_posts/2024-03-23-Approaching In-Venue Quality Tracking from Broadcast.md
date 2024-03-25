@@ -62,7 +62,7 @@ subtitle: 2024 MIT Sloan Sports Analytics Conference
       - tracking-data과 event-data를 통합하여 이러한 문제를 해결하고자 한다. -> multi-modal, consisting of multiple spatiotemporal input modes 
   
      <p align="center">
-        <img src="../assets/img/SAA attention.JPG">\
+        <img src="../assets/img/play encoding.JPG">
         <br>
         how we fuse where event data and broadcast tracking-data
     </p>
@@ -80,7 +80,7 @@ events
       - 이러한 비현실적인 motion를 해결하기 위해 diffusion을 활용한다.
       
      <p align="center">
-        <img src="../assets/img/SAA attention.JPG">\
+        <img src="../assets/img/diffusion model.JPG">
         <br>
         how we fuse where event data and broadcast tracking-data
     </p>
@@ -96,5 +96,24 @@ events
 - Downstream sporting analysis : xReceiver(Expected Recevier)
 - xReceiver의 출력이 In-venue tracking-data의 출력과 일치하려면, imputed tracking-data는 trajectory space의 복잡한 특징을 생성해야한다.
 
-  **xReceiver**
+  **1. xReceiver Dataset & Model**
+
+  - 패스 전 5~0.2초까지의 tracking-data를 활용하고, in-play상황에서 tracking-data가 완전히 존재하는 패스만 검사한다.
+  - Feature : agent location, agent's type(goalkeeper, ball or outfield player), attacking -> evnet-data에서 사용할 feature
+  - Model : SAA -> linear projection -> softmax
+
+  **2. xReceiver Quantitative Results**
+  - train : in-venue tracking-data & raw broadcast tracking-data
+  - imputed-data의 경우 in-venue tracking-data에서 학습된 xReceiver model를 활용한다. 이는 in-venue tracking-data를 대체할 수 있는지 분석하는데 도움을 준다.
+  - 정량적 결과(개인적으로 평가 대상이 아쉬움)
+    1. xReceiver의 상위 k명중 얼마나 하나로 평가
+    2. in-venue xReceiver의 출력과 얼마나 유사한지 Intersection over Union(IoU)로 평가
+
+  **3. xReceiver Qualitative Results**
+  - imputed tracking-data는 in-venue tracking-data과 매우 유사하면 실제 receiver인 28번을 높은 확률의 receiver로 간주한다.
   
+<p align="center">
+  <img src="../assets/img/정성적 평가.JPG">
+  <br>
+  Qualitative evaluation
+</p>
