@@ -117,7 +117,7 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
       - Learning rate 역시 batch size를 키우면 함께 증가시켜야 한다. 이는 다양한 parameter space를 탐색할 수 있기 때문이다(Figure2참고)  이를 위해 learning-rate를 다음과 같이 조정해야 한다:
       - 
         $$
-        \eta_L = \sqrt{\frac{|B_L|}{|B_S|}} \eta_S
+        \eta_{L} = \sqrt{\frac{|B_L|}{|B_S|}} \eta_{S}
         $$
 
 ## Experiment
@@ -131,8 +131,8 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
       <p align="center">
         <img src="../assets/img/일반화 실험 결과.JPG">
         <br>
-        Figure 3: Comparing generalization of large-batch regimes, adapted to match performance of smallbatch training.
+        Table 1, 2: Validation accuracy results
       </p> 
 
-      - 위 그림은 각 기법의 Validation accuracy를 비교한 것이다. SB(Small-batch)가 LB(Large-batch)에 비해 훨씬 성능이 좋은 것을 확인할 수 있으며, 이는 **generalization gap** 문제를 나타낸다. 그러나, LB에서 제안된 기법들을 적용하면 성능이 개선되어 **generalization gap**을 극복할 수 있음을 보여준다.
+      - Table1 2는 각 기법의 Validation accuracy를 비교한 것이다. SB(Small-batch)가 LB(Large-batch)에 비해 훨씬 성능이 좋은 것을 확인할 수 있으며, 이는 **generalization gap** 문제를 나타낸다. 그러나, LB에서 제안된 기법들을 적용하면 성능이 개선되어 **generalization gap**을 극복할 수 있음을 보여준다.
       - 특히 CIFAR-100을 사용한 C3 모델의 경우, SB보다도 +RA(Regime Adaptation)를 적용한 학습이 더 높은 성능을 보이는 것이 주목할 만하다.
