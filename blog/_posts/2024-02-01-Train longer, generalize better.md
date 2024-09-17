@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Train longer, generalize better
-subtitle: Train longer, generalize better: closing the generalization gap in large batch training of neural networks
+subtitle:  Train longer, generalize better: closing the generalization gap in large batch training of neural networks
 ---
 
 위 논문은 **Neural Information Processing Systems (NeurIPS) 2017**에 출판되었는데, 대규모 배치 학습에서 발생하는 일반화 격차를 줄이기 위한 방법을 제안하며 학습률과 학습 방법을 조정하여 성능을 향상시키는 전략을 탐구합니다.
