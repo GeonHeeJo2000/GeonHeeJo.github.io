@@ -34,5 +34,11 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
   - **"There is no inherent 'generalization gap': large-batch training can generalize as well as small batch training by adapting the number of iterations."**
   - 결국, 일반화 격차는 large batch size 자체에서 비롯된 것이 아니며, 충분한 학습 반복 횟수와 학습 체계를 조정하면 해결될 수 있다는 것을 말하고 있다.
 - Generalization gap을 해결하기 위해 이 논문에서는 **learning rate**과 **batch normalization**를 조정했다. 특히, 일반적으로 사용되는 training or validation errors의 변화에 따른 learning rate 조정 없이, 초기 높은 학습률을 사용했다.
-- 본 논문의 관심 있는 부분은 이러한 접근 방식이므로, 이론적인 부분인 *3. Theoretical analysis*는 생략한다.
 
+## Method
+ ### 3. Theoretical analysis
+    - SGD(Stochastic Gradient Descent) 기반의 딥러닝 최적화 과정을 수학적으로 설명한 부분이기 때문에 자세히 다루지는 않는다.
+ ### 3. Theoretical analysis
+    - SGD(Stochastic Gradient Descent) 기반의 딥러닝 최적화 과정을 수학적으로 설명한 부분이기 때문에 자세히 다루지는 않는다.
+ ### 3. Theoretical analysis
+    - SGD(Stochastic Gradient Descent) 기반의 딥러닝 최적화 과정을 수학적으로 설명한 부분이기 때문에 자세히 다루지는 않는다.
