@@ -37,11 +37,11 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
 
 
 ## Method
+- ㅁㄴㅇㅁ
+      **3. Theoretical Analysis**
+      - SGD(Stochastic Gradient Descent) 기반의 딥러닝 최적화 과정을 수학적으로 설명한 부분이기 때문에 자세히 다루지는 않겠다.
 
-  **3. Theoretical Analysis**
-    - SGD(Stochastic Gradient Descent) 기반의 딥러닝 최적화 과정을 수학적으로 설명한 부분이기 때문에 자세히 다루지는 않겠다.
-
-  **3. Model: Random Walk on a Random Potential**
+    **3. Model: Random Walk on a Random Potential**
     - 딥러닝에서 optimization 과정을 통계 물리학 관점에서 분석한 내용인데, 이론적인 부분은 모두 알지 못하지만 기본적인 내용은 파악하고 넘어간다.
     - 결국 저자가 말하고 싶은 것은 DNN loss surface가 랜덤 워크(불규칙하게 움직이는 입자의 경로를 설명하는 확률적 과정)나 랜덤 포텐셜(입자가 무작위의 힘에 의해 움직이는 환경)처럼 복잡한 형태를 띠고 있다는 점이다.
     - 본 논문에서는 딥러닝의 입자의 움직임이 "ultra-slow diffusion"하다고 주장합니다. 수식으로 설명하면, 입자가 이동한 거리가 \(\log t\)와 같은 형태로 증가한다:
