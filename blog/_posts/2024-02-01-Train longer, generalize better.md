@@ -21,8 +21,8 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
       Figure 1: Impact of batch size on classification error
     </p> 
     
-    - 그림을 보면 batch size가 크면 클수록 validation error가 증가하는 것을 확인할 수 있다. 이러한 현상을 우리는 일반화가 잘 되지 않았다고 하며, 일반적으로 batch size가 클수록 이러한 현상이 발생한다.
-    - 작은 batch size를 사용할 때는 각 배치가 데이터의 일부 샘플만을 사용하여 업데이트되기 때문에 샘플의 다양성에 의한 noise가 발생한다. 이러한 노이즈는 모델이 다양한 parameter space를 탐색하도록 하여 더 넓고 평탄한 최소점(flat minima)을 찾을 수 있다. 그러나 큰 batch size를 사용할 경우, 각 배치가 데이터 전체에 대한 평균을 사용하기 때문에 노이즈가 줄어들고 이로 인해 local minima에 빠질 수 있다
+      - 그림을 보면 batch size가 크면 클수록 validation error가 증가하는 것을 확인할 수 있다. 이러한 현상을 우리는 일반화가 잘 되지 않았다고 하며, 일반적으로 batch size가 클수록 이러한 현상이 발생한다.
+      - 작은 batch size를 사용할 때는 각 배치가 데이터의 일부 샘플만을 사용하여 업데이트되기 때문에 샘플의 다양성에 의한 noise가 발생한다. 이러한 노이즈는 모델이 다양한 parameter space를 탐색하도록 하여 더 넓고 평탄한 최소점(flat minima)을 찾을 수 있다. 그러나 큰 batch size를 사용할 경우, 각 배치가 데이터 전체에 대한 평균을 사용하기 때문에 노이즈가 줄어들고 이로 인해 local minima에 빠질 수 있다
 
 #### Why Should We Use Large Batch Sizes?
 1. Parallelize : 병렬 연산 향상
@@ -45,7 +45,7 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
     **3. Model: Random Walk on a Random Potential**
     - 딥러닝에서 optimization 과정을 통계 물리학 관점에서 분석한 내용인데, 이론적인 부분은 모두 알지 못하지만 기본적인 내용은 파악하고 넘어간다.
     - 결국 저자가 말하고 싶은 것은 DNN loss surface가 랜덤 워크(불규칙하게 움직이는 입자의 경로를 설명하는 확률적 과정)나 랜덤 포텐셜(입자가 무작위의 힘에 의해 움직이는 환경)처럼 복잡한 형태를 가지고 있다는 것이다.
-    - 본 논문에서는 딥러닝의 입자 움직임이 "ultra-slow diffusion"이라고 주장한다. 수식으로 설명하면, 입자가 이동한 거리가 다음과 같이 \(\log t\) 형태로 증가한다는 것이다:
+    - 본 논문에서는 딥러닝의 입자 움직임이 "ultra-slow diffusion"이라고 주장한다. 수식으로 설명하면, 입자가 이동한 거리가 다음과 같이 $$\log t$$ 형태로 증가한다는 것이다:
 
     $$
     \|\mathbf{w}_t - \mathbf{w}_0\| \sim \log t
@@ -57,6 +57,6 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
       Figure 2: Euclidean distance of weight vector from initialization
     </p> 
 
-    - 위 그림은 학습 시간이 경과함에 따라 초기 가중치 벡터와의 거리를 시각화한 것이다.
-    - 결론적으로 저자들은 딥러닝 모델이 손실 함수 공간에서 최적의 위치를 찾기 위해 많은 시간이 소요된다고 주장한다.
+      - 위 그림은 학습 시간이 경과함에 따라 초기 가중치 벡터와의 거리를 시각화한 것이다.
+      - 결론적으로 저자들은 딥러닝 모델이 손실 함수 공간에서 최적의 위치를 찾기 위해 많은 시간이 소요된다고 주장한다.
     
