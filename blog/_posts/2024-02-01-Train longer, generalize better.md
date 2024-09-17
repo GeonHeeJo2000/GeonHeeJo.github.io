@@ -22,4 +22,17 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
     </p> 
     
     - 그림을 보면 batch size가 크면 클수록 validation error가 증가하는 것을 확인할 수 있다. 이러한 현상을 우리는 일반화가 잘 되지 않았다고 하며, 일반적으로 batch size가 클수록 이러한 현상이 발생한다.
-    - 작은 batch size를 사용할 때는 각 배치가 데이터의 일부 샘플만을 사용하여 업데이트되기 때문에 샘플의 다양성에 의한 noise가 발생한다. 이러한 노이즈는 모델이 다양한 parameter space를 탐색하도록 하여 더 넓고 평탄한 최소점(flat minima)을 찾을 수 있다. 그러나 큰 batch size를 사용할 경우, 각 배치가 데이터 전체에 대한 평균을 사용하기 때문에 노이즈가 줄어들고 이로 인해 local minima에 빠질 수 있다.
+    - 작은 batch size를 사용할 때는 각 배치가 데이터의 일부 샘플만을 사용하여 업데이트되기 때문에 샘플의 다양성에 의한 noise가 발생한다. 이러한 노이즈는 모델이 다양한 parameter space를 탐색하도록 하여 더 넓고 평탄한 최소점(flat minima)을 찾을 수 있다. 그러나 큰 batch size를 사용할 경우, 각 배치가 데이터 전체에 대한 평균을 사용하기 때문에 노이즈가 줄어들고 이로 인해 local minima에 빠질 수 있다
+
+#### Why Should We Use Large Batch Sizes?
+1. Parallelize : 병렬 연산 향상
+2. Learning time : 학습 수렴 속도 향상
+3. Memory : 메모리와 자원을 효율성 향상
+
+## Contribution
+- 본 논문은 Large Batch Size를 사용할 때 발생하는 **generalization gap** 문제를 다양한 학습 체계를 활용하여 해결하고자 한다. 저자가 강조하는 핵심 메시지는 다음 문장에 담겨 있다: 
+  - **"There is no inherent 'generalization gap': large-batch training can generalize as well as small batch training by adapting the number of iterations."**
+  - 결국, 일반화 격차는 **large batch size** 자체에서 비롯된 것이 아니며, 충분한 학습 반복 횟수와 학습 체계를 조정하면 해결될 수 있다는 것을 말하고 있다.
+- **Generalization gap**을 해결하기 위해 이 논문에서는 **learning rate**과 **batch normalization**를 조정했다. 특히, 일반적으로 사용되는 training or validation errors의 변화에 따른 learning rate 조정 없이, 초기 높은 학습률을 사용했다.
+- 본 논문의 관심 있는 부분은 이러한 접근 방식이므로, 이론적인 부분인 *3. Theoretical analysis*는 생략한다.
+
