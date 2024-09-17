@@ -12,4 +12,14 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
 - 특히, 초기에는 높은 학습률(learning rate)을 사용하고, 추후에는 **초기 가중치와의 거리**를 바탕으로 학습률을 조정함으로써 일반적으로 사용되는 검증 오류(validation error)를 기반으로 한 학습률 조정 방식과는 다른 접근법을 제시합니다.
 
 ## Introduction
-- DNN(Deep Neural Network)은 매우 complex하고 non-convex하기 때문에 optimization method로는 SGD(Stocahstic gradient decent)를 활용한다. 그리고 SGD를 활용하여 과적합되지 않고 일반화가 잘 되고 이를 설명하는 연구([Understanding deep learning requires rethinking generalization](https://arxiv.org/abs/1611.03530))도 존재한다.
+-  딥 뉴럴 네트워크(DNN, Deep Neural Network)는 매우 complex하고 non-convex하기 때문에 optimization method로는 주로 **SGD(Stochastic Gradient Descent)**를 사용한다.
+-  SGD를 사용하여 모델의 generalization performance이 높게 나타나는 현상을 설명하는 연구([Understanding deep learning requires rethinking generalization](https://arxiv.org/abs/1611.03530))도 존재한다.
+  
+    <p align="center">
+      <img src="../assets/img/Impact of batch size on classification error.JPG">
+      <br>
+      Figure 1: Impact of batch size on classification error
+    </p> 
+    
+    - 그림을 보면 batch size가 크면 클수록 validation error가 증가하는 것을 확인할 수 있다. 이러한 현상을 우리는 일반화가 잘 되지 않았다고 하며, 일반적으로 batch size가 클수록 이러한 현상이 발생한다.
+    - 작은 batch size를 사용할 때는 각 배치가 데이터의 일부 샘플만을 사용하여 업데이트되기 때문에 샘플의 다양성에 의한 noise가 발생한다. 이러한 노이즈는 모델이 다양한 parameter space를 탐색하도록 하여 더 넓고 평탄한 최소점(flat minima)을 찾을 수 있다. 그러나 큰 batch size를 사용할 경우, 각 배치가 데이터 전체에 대한 평균을 사용하기 때문에 노이즈가 줄어들고 이로 인해 local minima에 빠질 수 있다.
