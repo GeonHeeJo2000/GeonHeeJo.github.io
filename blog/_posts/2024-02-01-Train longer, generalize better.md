@@ -84,29 +84,28 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
     - 위 그림은 학습 시간이 경과함에 따라 초기 가중치 벡터와의 거리를 시각화한 것이다.
     - 결론적으로 저자들은 딥러닝 모델이 손실 함수 공간에서 최적의 위치를 찾기 위해 많은 시간이 소요된다고 주장한다. 또한, learning rate를 조정하면 가중치 벡터와의 거리가 상대적으로 비슷한 패턴을 보임을 확인할 수 있다.
  
-    **Matching weight increment statistics for different mini-batch sizes**
-        1. Learning rate
-        - 서로 다른 mini-batch size에서 발생하는 확산 비율(diffusion rate)의 차이를 조정하여 **generalization gap**를 해결한다.
-        - mini-batch size에 따라 weight 업데이트의 통계를 일치시키기 위해 공분산 매트릭스를 구한다 이때, 공분산을 일정하게 유지하기 위해서는 학습률($$\eta$$)이 mini-batch size($$M$$)의 제곱근에 비례해야 함을 발견했다 : $$\eta \propto \sqrt{M}$$. 
-          
-        2. Ghost Batch Normalization
-        - TabNet 논문에서 소개된 GBN(Ghost Batch Normalization)은 **generalization gap**을 해결하기 위한 방법 중 하나이다. large batch size가 데이터의 다양성을 제대로 포착하지 못하는 문제를 해결하기 위해, large batch size를 더 작게 나눈 virtual("ghost") batch로 분할하고 각 가상 배치마다 정규화를 수행하여 일반화 오류를 줄이는 방식이다.
-        - 사실 이미 multi-device distributed setting에서 사용되고 있다. 각 디바이스별로 추가적인 communication cost를 피하기 위해서 device별로 batch norm statistics를 계산한다
-        <p align="center">
-          <img src="../assets/img/Ghost Batch Normalization (GBN) Algorithm.JPG">
-          <br>
-          Algorithm 1: Ghost Batch Normalization (GBN)
-        </p> 
-        
-        - GBN 알고리즘에서 언급되는 $$\epsilon$$은 수치적으로 0이 되지 않도록 하는 매우 작은 값(논문에는 언급X)
-        - 알고리즘이 복잡해 보일 수 있지만, 기본적으로는 mini-batch 단위로 평균과 표준편차를 계산한 후 정규화하는 과정이다.
+    **Learning rate**
+    - 서로 다른 mini-batch size에서 발생하는 확산 비율(diffusion rate)의 차이를 조정하여 **generalization gap**를 해결한다.
+    - mini-batch size에 따라 weight 업데이트의 통계를 일치시키기 위해 공분산 매트릭스를 구한다 이때, 공분산을 일정하게 유지하기 위해서는 학습률($$\eta$$)이 mini-batch size($$M$$)의 제곱근에 비례해야 함을 발견했다 : $$\eta \propto \sqrt{M}$$. 
       
-        <p align="center">
-          <img src="../assets/img/GBN파이썬 코드.JPG">
-          <br>
-          Algorithm 1: Ghost Batch Normalization (GBN)
-        </p> 
-        - GBN을 구현하는 코드는 간단하다. PyTorch에서 제공하는 Batch Normalization 모듈을 mini-batch 단위로 적용하면 된다. 이를 자신의 모델에 적용할 때는, 예를 들어 `x = self.bn(x)`와 같이 사용하면 된다.
+    **Ghost Batch Normalization**
+    - TabNet 논문에서 소개된 GBN(Ghost Batch Normalization)은 **generalization gap**을 해결하기 위한 방법 중 하나이다. large batch size가 데이터의 다양성을 제대로 포착하지 못하는 문제를 해결하기 위해, large batch size를 더 작게 나눈 virtual("ghost") batch로 분할하고 각 가상 배치마다 정규화를 수행하여 일반화 오류를 줄이는 방식이다.
+    - 사실 이미 multi-device distributed setting에서 사용되고 있다. 각 디바이스별로 추가적인 communication cost를 피하기 위해서 device별로 batch norm statistics를 계산한다
+    <p align="center">
+      <img src="../assets/img/Ghost Batch Normalization (GBN) Algorithm.JPG">
+      <br>
+      Algorithm 1: Ghost Batch Normalization (GBN)
+    </p> 
+    
+    - GBN 알고리즘에서 언급되는 $$\epsilon$$은 수치적으로 0이 되지 않도록 하는 매우 작은 값(논문에는 언급X)
+    - 알고리즘이 복잡해 보일 수 있지만, 기본적으로는 mini-batch 단위로 평균과 표준편차를 계산한 후 정규화하는 과정이다.
+  
+    <p align="center">
+      <img src="../assets/img/GBN파이썬 코드.JPG">
+      <br>
+      Algorithm 1: Ghost Batch Normalization (GBN)
+    </p> 
+    - GBN을 구현하는 코드는 간단하다. PyTorch에서 제공하는 Batch Normalization 모듈을 mini-batch 단위로 적용하면 된다. 이를 자신의 모델에 적용할 때는, 예를 들어 `x = self.bn(x)`와 같이 사용하면 된다.
  
     **Adapting number of weight updates eliminates generalization gap**
     - 본 논문에서는 초기 높은 learning rate를 사용하면 더 넓은 local minima를 탐색할 수 있고, 이로 인해 일반화 성능이 향상될 수 있다고 주장한다. (실제로 Figure 2에서도 학습률을 조정함으로써 weight vector 간 거리가 커지는 것을 확인할 수 있다.)
@@ -120,7 +119,7 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
 
       - 위 그림은 제안된 학습 체계를 적용했을 때, large batch size도 기존의 small batch size처럼 수렴할 수 있음을 보여준다.
       - 이로 인해, 저자들은 이러한 방법을 통해 **generalization gap**을 해결할 수 있다고 주장한다.
-      - 다만, batch size가 커지면 그에 따라 학습 횟수도 늘려야 한다. 이를 위해 저자들은 학습 횟수를 다음과 같이 변환해야 한다고 설명한다:
+      - 다만, batch size가 커지면 그에 따라 학습 횟수도 늘려야 한다. 이를 위해 저자들은 학습 횟수를 다음과 같이 조정해야 한다고 설명한다:
         $$
         \frac{|B_L|}{|B_S|} e \text{ epochs}
         $$
@@ -129,3 +128,25 @@ subtitle:  “Train longer, generalize better:” closing the generalization gap
         $$
         100 \times \left(\frac{1024}{32}\right) = 3200 \text{ epochs}
         $$
+
+      - Learning rate 역시 batch size를 키우면 함께 증가시켜야 한다. 이는 딥러닝의 학습이 초기에는 "ultra-slow diffusion"하기 때문이다. 이를 위해 저자들은 학습 횟수를 다음과 같이 조정해야 한다고 설명한다:
+        $$
+        \eta_L = \sqrt{\frac{|B_L|}{|B_S|}} \eta_S
+        $$
+
+## Experiment
+- MINIST, Cifar10, Cifar100, ImageNet등 다양한 데이터셋을 통한 실험 결과이다.
+1. SB : Small-batch 학습
+2. LB : Large-batch 학습
+3. +LR : LB + 학습률 조정
+4. +GBN : '+LR' + Ghost Batch Normalization
+6. +RA : '+GBN' + 학습 횟수 조정 (Regime Adaptation)
+   
+      <p align="center">
+        <img src="../assets/img/Comparing generalization of large-batch regimes, adapted to match performance of smallbatch training.JPG">
+        <br>
+        Figure 3: Comparing generalization of large-batch regimes, adapted to match performance of smallbatch training.
+      </p> 
+
+      - 위 그림은 각 기법의 Validation accuracy를 비교한 것이다. SB(Small-batch)가 LB(Large-batch)에 비해 훨씬 성능이 좋은 것을 확인할 수 있으며, 이는 **generalization gap** 문제를 나타낸다. 그러나, LB에서 제안된 기법들을 적용하면 성능이 개선되어 **generalization gap**을 극복할 수 있음을 보여준다.
+      - 특히 CIFAR-100을 사용한 C3 모델의 경우, SB보다도 +RA(Regime Adaptation)를 적용한 학습이 더 높은 성능을 보이는 것이 주목할 만하다.
