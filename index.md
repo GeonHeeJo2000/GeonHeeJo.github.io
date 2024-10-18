@@ -23,5 +23,5 @@ cover-img: /assets/img/football-crack.jpg
 ```
 Affiliation: Computational Intelligence and Data Analytics (CIDA) Laboratory
 Institution: University of Seoul, Seoul, South Korea
-Email: gun926777@kangwon.ac.kr
+Email: geonhee@uos.ac.kr
 ```
